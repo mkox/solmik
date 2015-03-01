@@ -1,0 +1,16 @@
+<?php
+use Zend\Debug\Debug;
+
+$title = 'Add new solmisation string';
+//$this->headTitle($title);
+//?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+//Debug::dump($form, 'create.phtml $form 1');
+$form->setAttribute('action', $this->url('solmik-string', array('action' => 'create')));
+$form->prepare();
+//Debug::dump($form, 'create.phtml $form 2');
+
+echo $this->form()->openTag($form);
+echo $this->formCollection($form);
+echo $this->form()->closeTag();

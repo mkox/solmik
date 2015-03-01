@@ -1,0 +1,109 @@
+#div1
+{
+    position: relative;
+    height: 150px;
+    width: 150px;
+    margin: 50px;
+    padding:10px;
+    border: 1px solid black;
+    -webkit-perspective:150px; /* Chrome, Safari, Opera  */
+    perspective:150px;
+}
+
+#div2, #all-squares
+{
+    /*    padding:50px; */
+    position: absolute;
+    /* background-color: red; */
+    -webkit-transform: rotateX(45deg); /* Chrome, Safari, Opera  */
+    transform: rotateX(45deg);
+}
+#all-squares .squares-3x3 .row {
+    display: table-row;
+}
+#all-squares .squares-3x3 .row div {
+    width: 2em;
+    height: 1em;
+    /*    background-color: yellow; */
+    display: table-cell;
+    border: 1px solid black;
+    /* background-image: url('../images/redDot.png'); */
+    background-repeat: no-repeat;
+    background-position:center; 
+    /*    float: right; */
+}
+#all-squares #sq10 .row div {
+    /*   background-color: orange; */
+}
+#all-squares #sq10, #sq9 {
+    /*border-width: 1px;*/
+}
+
+.squares-3x3.scale-pos-9 .row div {
+    background-color: graytext;
+}
+.squares-3x3.scale-pos-8 .row div {
+    background-color: blue;
+}
+.squares-3x3.scale-pos-7 .row div {
+    background-color: #96dfff;
+}
+.squares-3x3.scale-pos-6 .row div {
+    background-color: greenyellow;
+}
+.squares-3x3.scale-pos-5 .row div {
+    background-color: yellow;
+}
+.squares-3x3.scale-pos-4 .row div {
+    background-color: orange;
+}
+.squares-3x3.scale-pos-3 .row div {
+    background-color: yellow;
+}
+.squares-3x3.scale-pos-2 .row div {
+    background-color: greenyellow;
+}
+.squares-3x3.scale-pos-1 .row div {
+    background-color: graytext;
+}
+#upper {
+    float:left;
+    clear: both;
+}
+#upper1 {
+    float:left;
+}
+#upper2 {
+    float:right;
+}
+h2 {/*BETTER SOLUTION NEEDED*/
+    clear: both;
+}
+div#staff {
+    margin-top: 50px;
+    position: relative;
+}
+div#staff .note {
+    width: 35px;
+    /*height: 60px;*/
+}
+#frequencies-string2 {
+    max-width: 500px;
+    word-break: break-all;
+}
+form#random {
+    border: solid 1px;
+    padding: 5px;
+}
+
+#solmistring-form-for-list fieldset {
+    display: inline;
+}
+
+.container {
+    width: auto;
+}
+
+.categories-top {
+    clear: both;
+}

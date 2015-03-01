@@ -1,0 +1,24 @@
+<?php
+use Zend\Debug\Debug;
+
+$title = 'Add new category';
+//$this->headTitle($title);
+//?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+//Debug::dump($form, 'create.phtml $form 1');
+//$form->setAttribute('action', $this->url('solmik', array('controller' => 'solmik-category','action' => 'create')));
+$form->setAttribute('action', $this->url('solmik-category', array('action' => 'create')));
+$form->prepare();
+//Debug::dump($form, 'create.phtml $form 2');
+
+$category = $form->get('category');
+//Debug::dump($category, 'create.phtml $category');
+
+echo $this->form()->openTag($form);
+echo $this->formCollection($form);
+//echo $this->formHidden($category->get('id'));
+//echo $this->formRow($category->get('name'));
+//echo $this->formRow($category->get('public'));
+//echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
