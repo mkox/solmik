@@ -1,7 +1,7 @@
 require.config({
 //  baseUrl: 'js/',
     paths: {
-        jquery: [ 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js', 'libs/jquery/jquery-1.11.2.min' ],
+        jquery: [ 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min', 'libs/jquery/jquery-1.11.2.min' ],
         underscore: 'libs/underscore/underscore-min-1.7.0',
         backbone: 'libs/backbone/backbone-min-1.1.2',
 //    helpers: 'helpers',
@@ -26,7 +26,7 @@ require.config({
             deps: ["jquery", "underscore"],
             exports: "Backbone"
         }
-    },
+    }
 //    deps: ['solmi']
 
 });
