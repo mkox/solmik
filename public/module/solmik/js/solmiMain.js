@@ -3,13 +3,12 @@ define([
     'underscore',
     'backbone',
     'solmiBasics',
-    'solmiStrings',
     'helpers/helpers',
     'models/playCommon',
     'models/startfrequenciestuner',
     'views/forms',
     'views/additional'
-], function ($, _, Backbone, sb, solmiStrings, helpers, playCommon, startfrequenciestuner, forms, viewsAdd) {
+], function ($, _, Backbone, sb, helpers, playCommon, startfrequenciestuner, forms, viewsAdd) {
     
 //        $('#div1').after(selectFieldForRandomMode());
     $('#div1').after(forms.randomForm());
@@ -21,9 +20,6 @@ define([
     for (var i = 1; i <= 2; i++) {
         $('.squares-3x3 .row:nth-child(' + i + ') div:first-child').css({'visibility': 'hidden'});
     }
-
-//    var listOfSolmiStrings = solmiStrings.getListOfSolmiStrings;
-//    $('#solmi-strings').append(listOfSolmiStrings);
 
     $('#solmi-strings form .go').click(function () {
         console.log('scalesCurrent after click go: ', sb.scalesCurrent);

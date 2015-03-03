@@ -13,6 +13,7 @@
 //            name: "main",
             name: "config",
             exclude: [
+                "boilerplate",
                 "infrastructure"
             ]
         },
@@ -22,6 +23,7 @@
     ],
     paths: {
 //        machina: "empty:"
+        jquery: "empty:"
     },
     generateSourceMaps: true
 });
