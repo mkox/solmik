@@ -18,7 +18,14 @@ require.config({
         },
         tuner: {},
         frequenciesextractor: {},
-        notesfrequencies: {}
+        notesfrequencies: {},
+        underscore : {
+            exports : "_"
+        },
+        backbone : {
+            deps    : [ "jquery", "underscore" ],
+            exports : "Backbone"
+        }
     },
     deps: ['solmi']
 
