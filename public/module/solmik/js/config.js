@@ -19,17 +19,24 @@ require.config({
         tuner: {},
         frequenciesextractor: {},
         notesfrequencies: {},
-        underscore : {
-            exports : "_"
+        underscore: {
+            exports: "_"
         },
-        backbone : {
-            deps    : [ "jquery", "underscore" ],
-            exports : "Backbone"
+        backbone: {
+            deps: ["jquery", "underscore"],
+            exports: "Backbone"
         }
     },
-    deps: ['solmi']
+//    deps: ['solmi']
 
 });
+
+require(["infrastructure"], function () {
+    require(["solmi"], function (solmi) {
+//        app.init();
+    });
+});
+
 
 //require([
 //
