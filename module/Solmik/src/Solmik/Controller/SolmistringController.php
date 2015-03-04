@@ -9,25 +9,29 @@ use Solmik\Form;
 use Zend\Debug\Debug;
 
 class SolmistringController extends AbstractActionController {
-    
-    public function createAction() {
-        // Get your ObjectManager from the ServiceManager
-        $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
+    /**
+     *
+     * @var type Doctrine\ORM\EntityManager
+     */
+    protected $objectManager;
+
+    public function createAction() {
+        
         // Create the form and inject the ObjectManager
-        $form = new Form\CreateSolmistringForm($objectManager);
+        $form = new Form\CreateSolmistringForm($this->objectManager);
 
         // Create a new, empty entity and bind it to the form
         $solmistring = new Entity\Solmistring();
         $form->bind($solmistring);
 
         if ($this->request->isPost()) {
-//print_r($this->request);
+
             $form->setData($this->request->getPost());
 
             if ($form->isValid()) {
-                $objectManager->persist($solmistring);
-                $objectManager->flush();
+                $this->objectManager->persist($solmistring);
+                $this->objectManager->flush();
                 return $this->redirect()->toRoute('solmik');
             }
         }
@@ -37,15 +41,12 @@ class SolmistringController extends AbstractActionController {
 
     public function editAction() {
         $id = (int) $this->params()->fromRoute('id', 0);
-        
-        // Get your ObjectManager from the ServiceManager
-        $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+
         // Create the form and inject the ObjectManager
-        $form = new Form\UpdateSolmistringForm($objectManager);
+        $form = new Form\UpdateSolmistringForm($this->objectManager);
 
         // Create a new, empty entity and bind it to the form
-//        $solmistring = $this->userService->get($this->params('id'));
-        $solmistring = $objectManager->find('Solmik\Entity\Solmistring', $id);
+        $solmistring = $this->objectManager->find('Solmik\Entity\Solmistring', $id);
         $form->bind($solmistring);
 
         if ($this->request->isPost()) {
@@ -53,12 +54,17 @@ class SolmistringController extends AbstractActionController {
 
             if ($form->isValid()) {
                 // Save the changes
-                $objectManager->flush();
+                $this->objectManager->flush();
                 return $this->redirect()->toRoute('solmik');
             }
         }
 
         return array('form' => $form, 'id' => $id);
+    }
+
+    protected function attachDefaultListeners() {
+        parent::attachDefaultListeners();
+        $this->objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
     }
 
 }
