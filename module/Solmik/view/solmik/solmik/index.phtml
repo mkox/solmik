@@ -99,7 +99,8 @@ $this->headTitle($title);
                                 echo $this->form()->closeTag();
                                 ?> 
                                 <?php if($user) : ?>
-                                <a href="<?php echo $this->url('solmik-string', array('action' => 'edit', 'id' => $solmistrings[$j]->getId())); ?>">Edit string</a> 
+                                <a href="<?php echo $this->url('solmik-string', array('action' => 'edit', 'id' => $solmistrings[$j]->getId())); ?>">Edit</a> - 
+                                <a href="<?php echo $this->url('solmik-string', array('action' => 'delete', 'id' => $solmistrings[$j]->getId())); ?>">Delete</a>
                                 - <?php endif ?>
                                 <?php echo $solmistrings[$j]->getName(); ?>
                             </li>
