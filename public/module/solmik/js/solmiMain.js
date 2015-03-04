@@ -5,10 +5,10 @@ define([
     'solmiBasics',
     'helpers/helpers',
     'models/playCommon',
-    'models/startfrequenciestuner',
+    'models/frequenciesTuner',
     'views/forms',
     'views/additional'
-], function ($, _, Backbone, sb, helpers, playCommon, startfrequenciestuner, forms, viewsAdd) {
+], function ($, _, Backbone, sb, helpers, playCommon, frequenciesTuner, forms, viewsAdd) {
     
 //        $('#div1').after(selectFieldForRandomMode());
     $('#div1').after(forms.randomForm());
@@ -84,11 +84,11 @@ define([
     $('form.frequencies .start').click(function () {
 
         try {
-            if (startfrequenciestuner.tunerActive === false) {
-                startfrequenciestuner.tunerActive = true;
-                startfrequenciestuner.startTuner();
+            if (frequenciesTuner.tunerActive === false) {
+                frequenciesTuner.tunerActive = true;
+                frequenciesTuner.startTuner();
             } else {
-                startfrequenciestuner.tunerShowData = true;
+                frequenciesTuner.tunerShowData = true;
             }
         } catch (e) {
             console.error(e.message);
@@ -98,7 +98,8 @@ define([
     });
     $('form.frequencies .stop').click(function () {
         try {
-            startfrequenciestuner.tunerShowData = false;
+            frequenciesTuner.tunerShowData = false;
+console.log('solmiMain .stop frequenciesTuner', frequenciesTuner);
         } catch (e) {
             console.error(e.message);
             return false;

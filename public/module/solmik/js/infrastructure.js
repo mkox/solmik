@@ -1,9 +1,7 @@
 define([
     "backbone",
-    "frequenciesextractor",
     "jquery",
-    "notesfrequencies",
     "riffwave",
-    "tuner",
+//    "tuner",
     "underscore"
 ], function() { });

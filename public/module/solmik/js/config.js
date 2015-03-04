@@ -4,21 +4,15 @@ require.config({
         jquery: [ 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min', 'libs/jquery/jquery-1.11.2.min' ],
         underscore: 'libs/underscore/underscore-min-1.7.0',
         backbone: 'libs/backbone/backbone-min-1.1.2',
-//    helpers: 'helpers',
-//    views: 'views'
-//    solmiBasics: 'solmiBasics'
+        
         riffwave: 'libs/riffwave/riffwave',
-        tuner: 'models/tuner',
-        frequenciesextractor: 'models/frequenciesextractor',
-        notesfrequencies: 'models/notesfrequencies'
+//        tuner: 'models/tuner',
     },
     shim: {
         riffwave: {
 //            exports: 'Riffwave'
         },
-        tuner: {},
-        frequenciesextractor: {},
-        notesfrequencies: {},
+//        tuner: {},
         underscore: {
             exports: "_"
         },
