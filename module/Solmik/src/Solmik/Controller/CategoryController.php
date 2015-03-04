@@ -10,12 +10,15 @@ use Zend\Debug\Debug;
 
 class CategoryController extends AbstractActionController {
     
+    /**
+     *
+     * @var type Doctrine\ORM\EntityManager
+     */
+    protected $em;
+    
     public function createAction() {
-        // Get your ObjectManager from the ServiceManager
-        $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-
-        // Create the form and inject the ObjectManager
-        $form = new Form\CreateCategoryForm($objectManager);
+        // Create the form and inject the EntityManager
+        $form = new Form\CreateCategoryForm($this->em);
 
         // Create a new, empty entity and bind it to the form
         $category = new Entity\Category();
@@ -25,8 +28,8 @@ class CategoryController extends AbstractActionController {
             $form->setData($this->request->getPost());
 
             if ($form->isValid()) {
-                $objectManager->persist($category);
-                $objectManager->flush();
+                $this->em->persist($category);
+                $this->em->flush();
                 return $this->redirect()->toRoute('solmik');
             }
         }
@@ -35,26 +38,55 @@ class CategoryController extends AbstractActionController {
     }
 
     public function editAction() {
-        // Get your ObjectManager from the ServiceManager
-        $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+        $id = (int) $this->params()->fromRoute('id', 0);
 
-        // Create the form and inject the ObjectManager
-        $form = new UpdateBlogPostForm($objectManager);
+        // Create the form and inject the EntityManager
+        $form = new Form\UpdateCategoryForm($this->em);
 
-        // Create a new, empty entity and bind it to the form
-        $blogPost = $this->userService->get($this->params('blogPost_id'));
-        $form->bind($blogPost);
+        $category = $this->em->find('Solmik\Entity\Category', $id);
+        $form->bind($category);
 
         if ($this->request->isPost()) {
             $form->setData($this->request->getPost());
 
             if ($form->isValid()) {
                 // Save the changes
-                $objectManager->flush();
+                $this->em->flush();
+                return $this->redirect()->toRoute('solmik');
             }
         }
 
-        return array('form' => $form);
+        return array('form' => $form, 'id' => $id);
+    }
+    
+    public function deleteAction() {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('solmik');
+        }
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $del = $request->getPost('del', 'No');
+
+            if ($del == 'Yes') {
+                $id = (int) $request->getPost('id');
+                $this->em->remove($this->em->find('Solmik\Entity\Category', $id));
+                $this->em->flush();
+            }
+
+            return $this->redirect()->toRoute('solmik');
+        }
+        
+        return array(
+            'id' => $id,
+            'category' => $this->em->find('Solmik\Entity\Category', $id)
+        );
+    }
+
+    protected function attachDefaultListeners() {
+        parent::attachDefaultListeners();
+        $this->em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
     }
 
 }
