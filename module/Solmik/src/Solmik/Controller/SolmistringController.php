@@ -15,6 +15,10 @@ class SolmistringController extends AbstractActionController {
      * @var type Doctrine\ORM\EntityManager
      */
     protected $em;
+    
+    public function indexAction() {
+        return $this->redirect()->toRoute('solmik');
+    }
 
     public function createAction() {
 

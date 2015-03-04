@@ -41,7 +41,7 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'Solmik\Controller\Category',
-//                        'action' => 'create',
+                        'action' => 'index',
                     ),
                 ),
             ),
@@ -56,7 +56,7 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'Solmik\Controller\Solmistring',
-//                        'action' => 'create',
+                        'action' => 'index',
                     ),
                 ),
             ),

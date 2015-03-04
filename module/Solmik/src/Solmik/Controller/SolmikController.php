@@ -11,7 +11,7 @@ use Zend\Debug\Debug;
 class SolmikController extends AbstractActionController {
 
     public function indexAction() {
-//echo 'abc';
+
         $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 //Debug::Dump($objectManager->findAll(), '$objectManager->findAll():');
         $repository = $objectManager->getRepository('Solmik\Entity\Category');

@@ -16,6 +16,10 @@ class CategoryController extends AbstractActionController {
      */
     protected $em;
     
+    public function indexAction() {
+        return $this->redirect()->toRoute('solmik');
+    }
+    
     public function createAction() {
         // Create the form and inject the EntityManager
         $form = new Form\CreateCategoryForm($this->em);
