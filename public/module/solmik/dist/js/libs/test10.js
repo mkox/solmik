@@ -1,4 +1,1 @@
-define(function(){
-  
-  console.log('test10: ', 300);
-});
+define([],function(){console.log("test10: ",300)});

@@ -1,16 +1,14 @@
 ({
-//    mainConfigFile : "js/main.js",
     mainConfigFile : "js/config.js",
     appDir: "./",
     baseUrl: "js",
     removeCombined: true,
     findNestedDependencies: true,
     dir: "dist",
-    optimize: "none",
+//    optimize: "none",
     optimizeCss: "standard",
     modules: [
         {
-//            name: "main",
             name: "config",
             exclude: [
                 "boilerplate",
@@ -22,8 +20,7 @@
         }
     ],
     paths: {
-//        machina: "empty:"
         jquery: "empty:"
-    },
-    generateSourceMaps: true
+    }
+//    generateSourceMaps: true
 });

@@ -1,8 +1,1 @@
-define([
-  'jquery',
-  'underscore',
-  'backbone'
-], function($, _, Backbone){
-  
-  return {};
-});
+define(["jquery","underscore","backbone"],function(e,t,n){return{}});
