@@ -6,11 +6,19 @@ require.config({
         backbone: 'libs/backbone/backbone-min-1.1.2',
         
         riffwave: 'libs/riffwave/riffwave',
+        audiosynth: 'libs/audiosynth/audiosynth',
+        ConcatenateBlobs: 'libs/ConcatenateBlobs/ConcatenateBlobs'
 //        tuner: 'models/tuner',
     },
     shim: {
         riffwave: {
 //            exports: 'Riffwave'
+        },
+        audiosynth: {
+            
+        },
+        ConcatenateBlobs: {
+            
         },
 //        tuner: {},
         underscore: {

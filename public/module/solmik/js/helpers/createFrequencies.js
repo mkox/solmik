@@ -4,14 +4,15 @@ define([
     'backbone',
     'helpers/helpers'
 ], function ($, _, Backbone, helpers) {
-    
+
     var positionOfFullInScale;
     var soundKeys2;
     var basicTonesMajor2;
     var basicTonesMinorRaw2;
 
     return {
-        getFrequenciesInfo: function (soundKeys2a, basicTonesMajor2a, basicTonesMinorRaw2a, positionOfHalvesInScale, positionOfFullInScale1) {
+        getFrequenciesInfo: function (soundKeys2a, basicTonesMajor2a, basicTonesMinorRaw2a,
+                positionOfHalvesInScale, positionOfFullInScale1, noteNamesEnglish) {
 //            this.positionOfFullInScale = positionOfFullInScale;
             positionOfFullInScale = positionOfFullInScale1;
             basicTonesMajor2 = basicTonesMajor2a;
@@ -29,6 +30,7 @@ define([
                 frequencies[f]['scale'] = Math.ceil((f - 3) / 12);
                 var scalePositionOf12 = helpers.getPositionInScaleOfToneNumber(f);
                 frequencies[f]['scalePositionOf12'] = scalePositionOf12;
+                frequencies[f]['noteNameEnglish'] = noteNamesEnglish[scalePositionOf12][0];
                 var likeWhiteKey = 1;
                 var halfPosition = $.inArray(scalePositionOf12, positionOfHalvesInScale['major']);
                 if (halfPosition > -1) {

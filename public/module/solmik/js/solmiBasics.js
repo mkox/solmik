@@ -15,6 +15,9 @@ define([
     var basicTonesMinorRaw2 = helpers.flipObject(basicTonesMinorRaw);
     var basicTonesMinor = {'l': 1 + 12, 't': 3 + 12, 'd': 4, 'r': 6, 'm': 8, 'f': 9, 's': 11};
 
+    var noteNamesEnglish = {1: ['C'], 2: ['C#', 'Db'], 3: ['D'], 4: ['D#', 'Es'], 5: ['E'], 6: ['F'],
+        7: ['F#', 'Gb'], 8: ['G'], 9: ['G#', 'Ab'], 10: ['A'], 11: ['A#', 'Bb'], 12: 'B'};
+
     var scaleRange = [1, 9];
     var centralViewScaleForStart = 4;
     var centralViewScale = 0 + centralViewScaleForStart;
@@ -165,7 +168,8 @@ define([
         instruments: new Array('standard', 'clarinet'),
         currentInstrument: 'clarinet',
         toneFrequencies: helpers.createFrequencies(),
-        frequencies: createFrequencies.getFrequenciesInfo(soundKeys2, basicTonesMajor2, basicTonesMinorRaw2, positionOfHalvesInScale, positionOfFullInScale),
+        frequencies: createFrequencies.getFrequenciesInfo(soundKeys2, basicTonesMajor2, basicTonesMinorRaw2,
+                positionOfHalvesInScale, positionOfFullInScale, noteNamesEnglish),
 //    console.log('toneFrequencies: ', toneFrequencies);
 //    console.log('toneFrequencies[3]: ', toneFrequencies[3]);
 
