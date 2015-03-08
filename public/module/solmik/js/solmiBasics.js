@@ -131,7 +131,7 @@ define([
         },
         currentRandomMode: 'withSoundKeys',
         playData: {'notes': {}},
-        samples: [],
+//        samples: [],
 //    var notesInStaffStart = {'start-left': 100, 'start-bottom': 107, 'height-diff': 7, 'notes-diff': 4,
 //        'notes-left-current': 0, 'note-width': 30, 'inter-tone-signs-width': 6, 'continue': true};
         notesInStaffStart: notesInStaffStart,
@@ -165,8 +165,8 @@ define([
         numberOfNotesInStaffCurrent: 4,
         samples_length: 44100, // Compare http://en.wikipedia.org/wiki/44,100_Hz
 //    var samples_length = 22050;
-        instruments: new Array('standard', 'clarinet'),
-        currentInstrument: 'clarinet',
+        instruments: new Array('piano', 'organ', 'acoustic', 'edm'),
+        currentInstrument: 'piano',
         toneFrequencies: helpers.createFrequencies(),
         frequencies: createFrequencies.getFrequenciesInfo(soundKeys2, basicTonesMajor2, basicTonesMinorRaw2,
                 positionOfHalvesInScale, positionOfFullInScale, noteNamesEnglish),

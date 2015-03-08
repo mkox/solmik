@@ -105,11 +105,11 @@ define([
         },
 //        prepareForPlayStaff: function (solmiArray, position, toneData, toneElements, baseScale, toneFirstDivision) {
         prepareForPlayStaff: function (position, solmiArray) {
-//            console.log('prepareForPlayStaff solmiArray: ', solmiArray);
-//            console.log('prepareForPlayStaff position: ', position);
-//            console.log('prepareForPlayStaff sb.playData: ', sb.playData);
+            console.log('prepareForPlayStaff solmiArray: ', solmiArray);
+            console.log('prepareForPlayStaff position: ', position);
+            console.log('prepareForPlayStaff sb.playData: ', sb.playData);
             var frequencyNr = sb.playData['notes'][position]['frequency-nr'];
-//            console.log('prepareForPlayStaff frequencyNr', frequencyNr);
+            console.log('prepareForPlayStaff frequencyNr', frequencyNr);
             var imageNamePart = sb.noteLengths[sb.playData['notes'][position]['length']]['imageNamePart'];
 
             if (frequencyNr >= sb.staffRange[0] && frequencyNr <= sb.staffRange[1]) {
@@ -118,7 +118,7 @@ define([
                 // in require.js: outside of this function
 
                 var frequency = sb.frequencies[frequencyNr];
-//                console.log('prepareForPlayStaff frequency:', frequency);
+                console.log('prepareForPlayStaff frequency:', frequency);
                 var soundKeyF = frequency['soundKey'][sb.soundKeyCurrent['mm']][sb.soundKeyCurrent['position']];
 //                console.log('prepareForPlayStaff soundKeyF:', soundKeyF);
 //                console.log('prepareForPlayStaff soundKeyCurrent:', sb.soundKeyCurrent);
@@ -133,7 +133,7 @@ define([
                 var halfFileMarker = '';
 /*                var bottomAdd = 0;*/
                 if (frequency['whiteKey'] !== 1) { // so its a # or b note
-//                    console.log('prepareForPlayStaff 300');
+                    console.log('prepareForPlayStaff 300');
                     var ofKeyMarker = '';
                     if (!soundKeyF['activeHalf']) { // so it is a base tone of the actual sound key
                         ofKeyMarker = '_ofKey';
@@ -151,7 +151,7 @@ define([
                     }
 
                 } else {
-//                    console.log('prepareForPlayStaff 400');
+                    console.log('prepareForPlayStaff 400');
                     if (soundKeyF['activeHalf'] !== '') {
 /*
                         // The following outcommented code would use b and # instead of natural, where it is possible,
@@ -176,7 +176,7 @@ define([
                 var bottom = sb.notesInStaff['start-bottom'] + addedTonesOf7 * sb.notesInStaff['height-diff'];
                 var left = sb.notesInStaff['start-left'] + sb.notesInStaff['notes-left-current'] + sb.notesInStaff['notes-diff'];
 
-//                console.log('prepareForPlayStaff, left [[before half]]:', left);
+                console.log('prepareForPlayStaff, left [[before half]]:', left);
                 if (halfFile !== '') {
                     $('div#staff').append('<img src="/module/solmik/images/' + halfFile + '" class="sign half half-' + position + '" alt="' + halfFileMarker + '">');
                     $('div#staff .half-' + position).css({'position': 'absolute', 'bottom': bottom + 'px', 'left': left + 'px'});
@@ -186,7 +186,7 @@ define([
                 $('div#staff .note-' + position).css({'position': 'absolute', 'bottom': bottom + 'px', 'left': left + 'px'});
 
                 left += sb.notesInStaff['note-width'];
-//                console.log('prepareForPlayStaff, before notesInStaff[notes-left-current]: ', sb.notesInStaff['notes-left-current']);
+                console.log('prepareForPlayStaff, before notesInStaff[notes-left-current]: ', sb.notesInStaff['notes-left-current']);
                 sb.notesInStaff['notes-left-current'] = left - sb.notesInStaff['start-left'];
 
             } else {

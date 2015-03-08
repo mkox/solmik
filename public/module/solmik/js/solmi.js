@@ -8,8 +8,6 @@ define([
 });
 
 // TODO:
-// 
-// - (sometimes) the last tone is one tone after the last staff note is shown
 //     
 // - Frontend output of frequences + note-names, especially in connection with random:
 //   - at which stage taken for this output?
