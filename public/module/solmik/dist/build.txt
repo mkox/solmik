@@ -25,4 +25,6 @@ js/infrastructure.js
 js/libs/underscore/underscore-min-1.7.0.js
 js/libs/backbone/backbone-min-1.1.2.js
 js/libs/riffwave/riffwave.js
+js/libs/audiosynth/audiosynth.js
+js/libs/ConcatenateBlobs/ConcatenateBlobs.js
 js/infrastructure.js
