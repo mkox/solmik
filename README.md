@@ -96,9 +96,9 @@ Usage
 -----
 
 It is about relative solmization (http://youcantrustyourears.com/wp/solfege-solfeggio-or-solmization/). Connected with
-relative solmization is a concept for learning to sing better that uses hand moves. My idea is to replace these 
-hand moves with units of 7 squares that you have in mind. These squares you find in http://solmiktest1.michaelkox.de
-left top.
+relative solmization is a concept for learning to sing better that uses hand signs (http://dictionary.onmusic.org/appendix/topics/syllables-of-solmization). 
+My idea is to replace these hand signs with units of 7 squares that you have in mind. These squares you find 
+in http://solmiktest1.michaelkox.de left top.
 
 There is also a music staff, which you can use amongth others to rapidly read solmization values from random notes. 
 There are some configurations to decide from which area you choose random notes.

@@ -4,9 +4,7 @@ define([
     'backbone',
     'solmiBasics',
     'helpers/helpers',
-    'riffwave',
-    'audiosynth',
-    'ConcatenateBlobs'
+    'audiosynth'
 ], function ($, _, Backbone, sb, helpers) {
 
 //    var wavBlobs = [];
@@ -41,49 +39,7 @@ define([
 //            Synth.play('piano', sb.frequencies[frequencyNr]['noteNameEnglish'], sb.frequencies[frequencyNr]['scale'], lengthRatio);
 //            console.log('playSound.php playSound x150');
         },
-//        playSound: function () {
-//            var that = this;
-////console.log('playSound.php playSound wavBlobs', wavBlobs);
-////console.log('playSound.php playSound wavBlobs2', wavBlobs2);
-//
-////            ConcatenateBlobs(wavBlobs, 'audio/wav', function (resultingBlob) {
-////
-//////                POST_to_Server(resultingBlob);
-//////
-//////                // or preview locally
-//////                localVideo.src = URL.createObjectURL(resultingBlob);
-////
-////console.log('playSound.php playSound resultingBlob', resultingBlob);
-////                sb.startTimeOfPlay = Date.now();
-////                var audio = new Audio(resultingBlob);
-////                audio.play();
-////                return true;
-////            });
-//
-////            console.log('playSound.php playSound theBlob', wavBlobs);
-////var blob0 = wavBlobs.getBlob("text/plain");
-////console.log('playSound.php playSound blob0', blob0);
-//
-//
-////            var sampleRate = sb.samples_length; // the name(s) might change
-////
-////            that.normalize_invalid_values(sb.samples); // keep samples between [-1, +1]
-////
-////            var wave = new RIFFWAVE();
-////            wave.header.sampleRate = sampleRate;
-////            wave.header.numChannels = 1;
-////            var audio = new Audio();
-////            var samples2 = that.convert255(sb.samples);
-////            wave.Make(samples2);
-////            audio.src = wave.dataURI;
-//////        setTimeout(function() { // When using setTimeout, in playSolmiString(...) in the first 2 rounds startTimeOfPlay is only NaN instead of a number
-//
-////            console.log("playSound setTimeout / play:");
-////            sb.startTimeOfPlay = Date.now();
-////            audio.play();
-//
-////        }, 10); // page needs time to load?
-//        },
+        
         prepareForPlaySound: function (toneElements, scale, half, position, toneFirstDivision) {
             console.log("prepareForPlaySound sb.soundKeyCurrent:", sb.soundKeyCurrent);
             var basicToneNr = sb.basicTonesMajor[toneElements[0]];
