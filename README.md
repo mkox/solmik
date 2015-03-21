@@ -6,10 +6,12 @@ Introduction
 A test presentation of this you find in http://solmiktest1.michaelkox.de.
 It is best tested with Firefox, it does not work with Internet Explorer.
 It is not ready to use for a general public, but already has a lot of functionality. 
+
 Some of the tools used for it:
 - Zend Framework 2: http://framework.zend.com/
 - Doctrine, Object Relational Mapper (ORM): http://www.doctrine-project.org/projects/orm.html
 - require.js: http://requirejs.org/
+
 My own code you find mainly in the following folders:
 - module/Solmik
 - public/module/solmik
@@ -17,7 +19,7 @@ My own code you find mainly in the following folders:
 Installation
 ------------
 
-In the linux shell insert:
+Insert in the linux shell:
 
     git clone https://github.com/mkox/solmik.git
     cd solmik
