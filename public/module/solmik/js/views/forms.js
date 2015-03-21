@@ -23,8 +23,6 @@ function frequenciesForm() {
     function soundKeySelectField() {
         var select = '<select name="sound-keys" class="sound-keys">' + "/n";
         var mm = new Array('major', 'minor');
-//        for (var i = 0; i < soundKeys.length; i++) {
-//            for (var soundkey in soundKeys[i]) {
         for (var i = 0; i < mm.length; i++) {
             for (var soundkey in sb.soundKeys[mm[i]]) {
                 select += '<option value="' + soundkey + '">' + soundkey + '</option>';
@@ -130,30 +128,16 @@ function frequenciesForm() {
         },
         selectFormWithToneNames: function (name, rangePosition) {
             var select = name + ': <select name="' + name + '" class="tone-' + name + '">' + "/n";
-            //for (var noteNr in notesNrAndName) {
             for (var i = sb.staffRange[1]; i > sb.staffRange[0]; i--) {
                 var selected = '';
-//            if (noteNr === randomRange[rangePosition]) {
                 if (i === sb.randomRange[rangePosition]) {
                     selected = ' selected';
                 }
-//            select += '<option value="' + noteNr + '"' + selected + '>' + notesNrAndName[noteNr] + '</option>';
                 select += '<option value="' + i + '"' + selected + '>' + sb.notesNrAndName[i] + '</option>';
             }
             select += '</select>';
             return select;
         },
-//        solmiStringForm: function (solmiString) {
-//            var form = '<form>';
-//            form += '<input type="checkbox" name="solmi-string" value="standard">' + "\n";
-//            form += soundKeySelect + "\n";
-//            form += this.baseScaleSelectField(solmiString) + "\n";
-//            form += '<input type="text" value="' + solmiString['string'] + '">' + "\n";
-//            form += '<input type="submit" class="go" value="Go">';
-////        form += '<input type="submit" class="random" value="Random">';
-//            form += '</form>';
-//            return form;
-//        },
         soundKeySelect: soundKeySelect
     };
 });

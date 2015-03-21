@@ -38,11 +38,6 @@ define([
                     positionInScaleForName += 12;
                     scaleForThisTone += 1;
                 }
-//            var positionInScaleForName = positionInScale + (soundKeyCurrent['position'] - 1);
-//            if (positionInScaleForName > 12) {
-//                positionInScaleForName -= 12;
-//                scaleForThisTone -= 1;
-//            }
 
                 var half = '';
                 console.log('createSolmiArrayFromToneNumbers positionInScaleForName 1:', positionInScaleForName);
@@ -51,7 +46,6 @@ define([
                 if (halfExist > -1) {
 
                     var halfNr = -1;
-                    //if (sb.frequencyNrIsHalf[toneNumbers[i]] === 0) { // To make sure that a note of a "full note name" is in the staff in a height accoring to this name (so not used is an alternative with # or b).
                     if (sb.frequencies[toneNumbers[i]]['whiteKey'] !== 1) { // To make sure that a note of a "full note name" is in the staff in a height accoring to this name (so not used is an alternative with # or b).
                         if (sb.soundKeyCurrent['half'] === 'i') {
                             halfNr = 0;
@@ -64,15 +58,11 @@ define([
                     }
                     if (halfNr === 0) {
                         half = 'u';
-//                    positionInScaleForName = positionInScale + 1;
-//                    positionInScaleForName = positionInScaleForName + 1;
                         positionInScaleForName = helpers.getPositionInScaleOfBasicTone(positionInScaleForName + 1);
                     } else {
                         var noHalfIndex = $.inArray(positionInScaleForName, noHalves);
                         if (noHalfIndex === -1) {
                             half = 'i';
-//                        positionInScaleForName = positionInScale - 1;
-//                        positionInScaleForName = positionInScaleForName - 1;
                             positionInScaleForName = helpers.getPositionInScaleOfBasicTone(positionInScaleForName - 1);
                         }
                     }
@@ -81,10 +71,7 @@ define([
                 console.log('createSolmiArrayFromToneNumbers positionInScaleForName: ', positionInScaleForName);
                 console.log('createSolmiArrayFromToneNumbers positionOfDoReMi[positionInScaleForName]: ', positionOfDoReMi[positionInScaleForName]);
                 solmiTone += positionOfDoReMi[positionInScaleForName] + half;
-//                var scaleOfToneNumber = helpers.getScaleOfToneNumber(toneNumbers[i]);
                 var scaleOfToneNumber = sb.frequencies[toneNumbers[i]]['scale'];
-//            console.log('createSolmiArrayFromToneNumbers scaleOfToneNumber: ', scaleOfToneNumber);
-//            var scalesDiff = centralViewScaleForStart - scaleOfToneNumber;
                 var scalesDiff = scaleForThisTone - scaleOfToneNumber;
 //            console.log('createSolmiArrayFromToneNumbers scalesDiff: ', scalesDiff);
                 if (scalesDiff !== 0) {
