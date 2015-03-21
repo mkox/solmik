@@ -1,77 +1,91 @@
-ZendSkeletonApplication
-=======================
+Solmik - solmisation tool
+=========================
 
 Introduction
 ------------
-This is a simple, skeleton application using the ZF2 MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to get their feet wet with ZF2.
+A test presentation of this you find in http://solmiktest1.michaelkox.de.
+It is best tested with Firefox, it does not work with Internet Explorer.
+It is not ready to use for a general public, but already has a lot of functionality. 
+Some of the tools used for it:
+- Zend Framework 2: http://framework.zend.com/
+- Doctrine, Object Relational Mapper (ORM): http://www.doctrine-project.org/projects/orm.html
+- require.js: http://requirejs.org/
+My own code you find mainly in the following folders:
+- module/Solmik
+- public/module/solmik
 
 Installation
 ------------
 
-Using Composer (recommended)
-----------------------------
-The recommended way to get a working copy of this project is to clone the repository
-and use `composer` to install dependencies using the `create-project` command:
+In the linux shell insert:
 
-    curl -s https://getcomposer.org/installer | php --
-    php composer.phar create-project -sdev --repository-url="https://packages.zendframework.com" zendframework/skeleton-application path/to/install
-
-Alternately, clone the repository and manually invoke `composer` using the shipped
-`composer.phar`:
-
-    cd my/project/dir
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git
-    cd ZendSkeletonApplication
+    git clone https://github.com/mkox/solmik.git
+    cd solmik
     php composer.phar self-update
     php composer.phar install
 
-(The `self-update` directive is to ensure you have an up-to-date `composer.phar`
-available.)
+    cd config/autoload
 
-Another alternative for downloading the project is to grab it via `curl`, and
-then pass it to `tar`:
+In this folder create a file local.php with this content:
 
-    cd my/project/dir
-    curl -#L https://github.com/zendframework/ZendSkeletonApplication/tarball/master | tar xz --strip-components=1
+    <?php
+    /**
+     * Local Configuration Override
+     *
+     * This configuration override file is for overriding environment-specific and
+     * security-sensitive configuration information. 
+     *
+     * @NOTE: This file is ignored from Git by default with the .gitignore included
+     * in ZendSkeletonApplication. This is a good practice, as it prevents sensitive
+     * credentials from accidentally being committed into version control.
+     */
+    return array(
+        'doctrine' => array(
+            'connection' => array(
+                'orm_default' => array(
+                    'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                    'params' => array(
+                        'host'     => 'YOUR-HOST', // e.g. "localhost"
+                        'port'     => '3306',
+                        'user'     => 'YOUR USER',
+                        'password' => 'YOUR PASSWORD',
+                        'dbname'   => 'YOUR DATABASE NAME',
+                    )
+                )
+            )
+        ),
+    );
 
-You would then invoke `composer` to install dependencies per the previous
-example.
+After this file creation the next task:
 
-Using Git submodules
---------------------
-Alternatively, you can install using native git submodules:
+    cd -
+    // or:   cd ../../
+    vendor/bin/doctrine-module orm:validate-schema
 
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git --recursive
+You might need to put something like "php " or "php5xy " before "vendor/...".
+When so far everything is ok, the following should be shown in the shell:
 
-Web Server Setup
-----------------
+    [Mapping]  OK - The mapping files are correct.
+    [Database] FAIL - The database schema is not in sync with the current mapping file.
 
-### PHP CLI Server
+Now create database tables:
 
-The simplest way to get started if you are using PHP 5.4 or above is to start the internal PHP cli-server in the root directory:
+    vendor/bin/doctrine-module orm:schema-tool:create
 
-    php -S 0.0.0.0:8080 -t public/ public/index.php
+A success message should look like the following:
 
-This will start the cli-server on port 8080, and bind it to all network
-interfaces.
+    ATTENTION: This operation should not be executed in a production environment.
+    Creating database schema...
+    Database schema created successfully!
 
-**Note: ** The built-in CLI server is *for development only*.
+Now you can insert data into the database tables from the file solmik_insert_data.sql.
+In addition in the table User you should insert a name and a password.
 
-### Apache Setup
+Maybe you also have to adept the file `public/.htaccess`, especially on a provider for shared content:
+If you have an error 500 (Internal Server Error), it might help, if you uncomment the last three lines and add
+a new one:
 
-To setup apache, setup a virtual host to point to the public/ directory of the
-project and you should be ready to go! It should look something like below:
-
-    <VirtualHost *:80>
-        ServerName zf2-tutorial.localhost
-        DocumentRoot /path/to/zf2-tutorial/public
-        SetEnv APPLICATION_ENV "development"
-        <Directory /path/to/zf2-tutorial/public>
-            DirectoryIndex index.php
-            AllowOverride All
-            Order allow,deny
-            Allow from all
-        </Directory>
-    </VirtualHost>
+    # RewriteCond %{REQUEST_URI}::$1 ^(/.+)(.+)::\2$
+    # RewriteRule ^(.*) - [E=BASE:%1]
+    # RewriteRule ^(.*)$ %{ENV:BASE}index.php [NC,L]
+    RewriteRule ^(.*)$ /index.php [L]
