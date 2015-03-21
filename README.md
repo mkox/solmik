@@ -1,9 +1,9 @@
-Solmik - solmisation tool
+Solmik - solmization tool
 =========================
 
 Introduction
 ------------
-A test presentation of this you find in http://solmiktest1.michaelkox.de.
+A test presentation of this you find in **http://solmiktest1.michaelkox.de**.
 It is best tested with Firefox, it does not work with Internet Explorer.
 It is not ready to use for a general public, but already has a lot of functionality. 
 
@@ -91,3 +91,23 @@ a new one:
     # RewriteRule ^(.*) - [E=BASE:%1]
     # RewriteRule ^(.*)$ %{ENV:BASE}index.php [NC,L]
     RewriteRule ^(.*)$ /index.php [L]
+
+Usage
+-----
+
+It is about relative solmization (http://youcantrustyourears.com/wp/solfege-solfeggio-or-solmization/). Connected with
+relative solmization is a concept for learning to sing better that uses hand moves. My idea is to replace these 
+hand moves with units of 7 squares that you have in mind. These squares you find in http://solmiktest1.michaelkox.de
+left top.
+
+There is also a music staff, which you can use amongth others to rapidly read solmization values from random notes. 
+There are some configurations to decide from which area you choose random notes.
+In the music staff you find also notes that represent solmization strings that can be choosen, created and played
+further below.
+
+You can hear the sound of the solmization strings, at the moment you can choose between 4 instruments.
+
+There is a login area where you can insert new solmization strings and new categies, or change or delete them.
+
+The buttons "start", "stop" and "reset" belong to an experimental feature for using sound that is sent 
+through a microphone.
