@@ -7,26 +7,7 @@ define([
     'audiosynth'
 ], function ($, _, Backbone, sb, helpers) {
 
-//    var wavBlobs = [];
-//    var wavBlobs2 = [];
-
     return {
-        convert255: function (data) {
-            var data_0_255 = [];
-            for (var i = 0; i < data.length; i++) {
-                data_0_255[i] = 128 + Math.round(127 * data[i]);
-            }
-            return data_0_255;
-        },
-        normalize_invalid_values: function (samples) {
-            for (var i = 0, len = samples.length; i < len; i++) {
-                if (samples[i] > 1) {
-                    samples[i] = 1;
-                } else if (samples[i] < -1) {
-                    samples[i] = -1;
-                }
-            }
-        },
         playSound: function (position) {
 //            var that = this;
 
@@ -62,22 +43,19 @@ define([
                 }
             }
 
-//            var positionInScale = helpers.getPositionInScaleOfToneNumber(frequencyNr);
-
             sb.playData['notes'][position]['frequency-nr'] = frequencyNr;
 //            console.log('prepareForPlaySound frequencyNr: ', frequencyNr);
 
-//            var sampleRate = sb.samples_length;
-
-            this.selectInstrument(sb.currentInstrument, frequencyNr, position);
+            this.generateAndStoreSound(sb.currentInstrument, frequencyNr, position);
         },
+        
         /**
          * 
          * @param {type} instrument
          * @param {type} frequencyNr
          * @param {type} position
          */
-        selectInstrument: function (instrument, frequencyNr, position) {
+        generateAndStoreSound: function (instrument, frequencyNr, position) {
 
             var lengthRatio = sb.playData['notes'][position]['length'] * sb.baseToneLength / 1000;
 //            console.log('playSound.php selectInstrument lengthRatio: ', lengthRatio);
