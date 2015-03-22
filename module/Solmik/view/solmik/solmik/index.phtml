@@ -1,8 +1,29 @@
 <?php
-$title = 'My solmisation strings';
+$title = 'My solmization strings';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+<div id="head">
+    <h1><?php echo $this->escapeHtml($title); ?></h1>
+    <div id="login">
+        <?php
+        $user = $this->identity();
+        if ($user) {
+            echo '<div id="logged-in-message">Logged in as ' . $this->escapeHtml($user->getUsername()) . '</div>';
+            echo '<form action="&#x2F;solmik&#x2F;logout" method="POST" name="login-form" id="logout-form"><input name="submit" type="submit" value="Log out"></form>';
+        } else {
+            $loginForm->prepare();
+            $loginForm->setAttribute('action', $this->url(
+                            'solmik', array(
+                        'action' => 'login'
+                            )
+            ));
+            echo $this->form()->openTag($loginForm);
+            echo $this->formCollection($loginForm);
+            echo $this->form()->closeTag();
+        }
+        ?>
+    </div>
+</div>
 <div id="upper">
     <div id="upper1">
         <div id="div1">
@@ -52,28 +73,27 @@ $this->headTitle($title);
         <div id="frequencies-string2"></div>
     </div>
 </div>
-<?php $user = $this->identity() ?>
 <p class="categories-top">
     <strong>Categories</strong>
-    <?php if($user) : ?>
-    - <a href="<?php
+    <?php if ($user) : ?>
+        - <a href="<?php
 //    echo $this->url('solmik', array('controller' => 'solmik-category', 'action' => 'create')); 
-    echo $this->url('solmik-category', array('action' => 'create'));
-    ?>">Add new Category</a>
-    <?php endif ?>
+        echo $this->url('solmik-category', array('action' => 'create'));
+        ?>">Add new Category</a>
+         <?php endif ?>
 </p>
 <table class="table" id="solmi-strings">
     <?php foreach ($categories as $cKey => $category) : ?>
         <tr>
             <td><?php echo $this->escapeHtml($category->getName()); ?>
-        <?php if($user) : ?>
-                <a href="<?php echo $this->url('solmik-category', array('action' => 'edit', 'id' => $category->getId()));
-        ?>">Edit</a> - 
-                <a href="<?php echo $this->url('solmik-category', array('action' => 'delete', 'id' => $category->getId()));
-        ?>">Delete</a> - 
-                <a href="<?php echo $this->url('solmik-string', array('action' => 'create', 'id' => $category->getId()));
-        ?>">Add string</a>
-        <?php endif ?>
+                <?php if ($user) : ?>
+                    <a href="<?php echo $this->url('solmik-category', array('action' => 'edit', 'id' => $category->getId()));
+                    ?>">Edit</a> - 
+                    <a href="<?php echo $this->url('solmik-category', array('action' => 'delete', 'id' => $category->getId()));
+                    ?>">Delete</a> - 
+                    <a href="<?php echo $this->url('solmik-string', array('action' => 'create', 'id' => $category->getId()));
+                    ?>">Add string</a>
+                   <?php endif ?>
             </td>
         </tr>
         <tr>
@@ -98,10 +118,10 @@ $this->headTitle($title);
                                 echo $this->formCollection($stringForm);
                                 echo $this->form()->closeTag();
                                 ?> 
-                                <?php if($user) : ?>
-                                <a href="<?php echo $this->url('solmik-string', array('action' => 'edit', 'id' => $solmistrings[$j]->getId())); ?>">Edit</a> - 
-                                <a href="<?php echo $this->url('solmik-string', array('action' => 'delete', 'id' => $solmistrings[$j]->getId())); ?>">Delete</a>
-                                - <?php endif ?>
+                                <?php if ($user) : ?>
+                                    <a href="<?php echo $this->url('solmik-string', array('action' => 'edit', 'id' => $solmistrings[$j]->getId())); ?>">Edit</a> - 
+                                    <a href="<?php echo $this->url('solmik-string', array('action' => 'delete', 'id' => $solmistrings[$j]->getId())); ?>">Delete</a>
+                                    - <?php endif ?>
                                 <?php echo $solmistrings[$j]->getName(); ?>
                             </li>
                         <?php endfor; ?> 
@@ -111,19 +131,3 @@ $this->headTitle($title);
         </tr>
     <?php endforeach; ?>
 </table>
-<?php
-if ($user) {
-    echo 'Logged in as ' . $this->escapeHtml($user->getUsername());
-    echo '<form action="&#x2F;solmik&#x2F;logout" method="POST" name="login-form" id="logout-form"><input name="submit" type="submit" value="Log out"></form>';
-} else {
-    $loginForm->prepare();
-    $loginForm->setAttribute('action', $this->url(
-                    'solmik', array(
-                'action' => 'login'
-                    )
-    ));
-    echo $this->form()->openTag($loginForm);
-    echo $this->formCollection($loginForm);
-    echo $this->form()->closeTag();
-}
-?>

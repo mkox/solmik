@@ -3,30 +3,43 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headTitle('ZF2 ' . $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
-        <?php echo $this->headMeta()
-            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
-            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
         ?>
 
         <!-- Le styles -->
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                        ->prependStylesheet($this->basePath() . '/module/solmik/css/main.css')
-                        ->prependStylesheet($this->basePath() . '/css/style.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+        <?php
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                ->prependStylesheet($this->basePath() . '/module/solmik/css/main.css')
+                ->prependStylesheet($this->basePath() . '/css/style.css')
+                ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+                ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+        ?>
 
         <!-- Scripts -->
-        <?php echo $this->headScript()
-            ->setAllowArbitraryAttributes(true)
-//            ->prependFile($this->basePath() . '/module/solmik/js/libs/require/require-2.1.15-with-comments.js', 'text/javascript', array('data-main' => '/module/solmik/js/config',))
-            ->prependFile($this->basePath() . '/module/solmik/js/libs/require/require-2.1.15-with-comments.js', 'text/javascript', array('data-main' => '/module/solmik/dist/js/config',))
-            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
-            ->prependFile($this->basePath() . '/js/jquery.min.js')
-            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
-        ; ?>
+        <?php
+//        $jQuery_script_code = '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>';
+//        $jQuery_script_code.= '<script>';
+//        $jQuery_script_code.= '!window.jQuery && document.write(unescape(\'%3Cscript src="' . $this->basePath() . '/js/module/solmik/libs/jquery/jquery-1.11.2.min.js"%3E%3C/script%3E\'));';
+//        $jQuery_script_code.= '</script>';
+        echo $this->headScript()
+                ->setAllowArbitraryAttributes(true)
+                ->prependFile($this->basePath() . '/module/solmik/js/libs/require/require-2.1.15-with-comments.js', 'text/javascript', array('data-main' => '/module/solmik/js/config',))
+//            ->prependFile($this->basePath() . '/module/solmik/js/libs/require/require-2.1.15-with-comments.js', 'text/javascript', array('data-main' => '/module/solmik/dist/js/config',))
+            
+//                ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+//
+////            ->prependFile($this->basePath() . '/js/jquery.min.js')
+//                ->prependScript($jQuery_script_code)
+                
+                ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+        ;
+        ?>
 
     </head>
     <body>
@@ -48,12 +61,12 @@
             </div>
         </nav>
         <div class="container">
-            <?php echo $this->content; ?>
+<?php echo $this->content; ?>
             <hr>
             <footer>
                 <p>&copy; 2014 - <?php echo date('Y') ?> by Michael Kox <?php echo $this->translate('All rights reserved.') ?></p>
             </footer>
         </div> <!-- /container -->
-        <?php echo $this->inlineScript() ?>
+<?php echo $this->inlineScript() ?>
     </body>
 </html>

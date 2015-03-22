@@ -10,7 +10,6 @@ define([
     'views/additional'
 ], function ($, _, Backbone, sb, helpers, playCommon, frequenciesTuner, forms, viewsAdd) {
     
-//        $('#div1').after(selectFieldForRandomMode());
     $('#div1').after(forms.randomForm());
     $('#div1').after(viewsAdd.inputBaseToneLength());
     $('#div1').after(forms.selectFieldForRepetition());
@@ -31,16 +30,6 @@ define([
 //        }
 //        return false;
     });
-//        $('#solmi-strings form .random').click(function() {
-//            console.log('scalesCurrent after click random: ', scalesCurrent);
-//            try {
-//                prepareForPlay(this, 'random');
-//            } catch (e) {
-//                console.error(e.message);
-//                return false;
-//            }
-//            return false;
-//        });
 
     $('form#random .go').click(function () {
         console.log('scalesCurrent after click form#random: ', sb.scalesCurrent);
@@ -70,10 +59,6 @@ define([
     $('#base-tone-length').change(function () {
         sb.baseToneLength = parseInt($(this).val());
     });
-
-//        $('#random-modes').change(function() {
-//            currentRandomMode = $(this).val();
-//        });
 
     $('.sound-keys').change(function () {// later: remove this, action only if form is clicked
         var soundKey = $(this).val();

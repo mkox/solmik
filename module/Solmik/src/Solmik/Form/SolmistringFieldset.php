@@ -74,7 +74,7 @@ class SolmistringFieldset extends Fieldset implements InputFilterProviderInterfa
             'type' => 'Zend\Form\Element\Text',
             'name' => 'string',
             'options' => array(
-                'label' => 'Solmisation string: '
+                'label' => 'Solmization string: '
             )
         ));
 

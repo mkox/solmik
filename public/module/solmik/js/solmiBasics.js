@@ -5,7 +5,6 @@ define([
     'helpers/helpers',
     'helpers/createFrequencies'
 ], function ($, _, Backbone, helpers, createFrequencies) {
-//define(function(){
     console.log('solmiBasics.js 1, helpers', helpers);
 
     var basicTones = new Array('d', 'r', 'm', 'f', 's', 'l', 't');
@@ -26,15 +25,12 @@ define([
     scalesCurrent = helpers.setScalesCurrent(scaleRange, centralViewScale, scalesCurrent);
     console.log('solmiBasics.js scalesCurrent', scalesCurrent);
     var scalesLimit = helpers.scalesLimit(scaleRange);
-//    var notesInStaffStart = {'signature-start-left': 60, 'start-left': 120, 'start-bottom': 107, 'height-diff': 7, 'notes-diff': 4,
-//        'notes-left-current': 0, 'note-width': 35, 'inter-tone-signs-width': 6, 'continue': true};
     var notesInStaffStart = {'signature-start-left': 60, 'start-left': 120, 'start-bottom': 110, 'height-diff': 6.8, 'notes-diff': 4,
         'notes-left-current': 0, 'note-width': 35, 'inter-tone-signs-width': 6, 'continue': true};
 
     var staffRange = [16, 64];
     var positionOfHalvesInScale = {'major': [2, 4, 7, 9, 11], 'minor': [2, 5, 7, 10, 12]};
     var positionOfFullInScale = {'major': [1, 3, 5, 6, 8, 10, 12], 'minor': [1, 3, 4, 6, 8, 9, 11]};
-//    var frequencyNrIsHalf = helpers.setIfFrequencyNrIsHalf(staffRange, positionOfHalvesInScale);
 
     //DEPRECIATED:
     var soundKeys = {
@@ -76,11 +72,7 @@ define([
         } // (Was first not in List: 4->dis/es)
     }; // 2: Des + cis; 9: As + gis
 
-//return {
-//baseToneLength: 500
-//}
     return {
-//    var xreturn = {
         baseToneLength: 500,
         basicTones: basicTones,
         basicTonesMajor: basicTonesMajor,
@@ -94,23 +86,14 @@ define([
         tonePositions: {'d': [3, 1], 'r': [3, 2], 'm': [3, 3], 'f': [2, 2], 's': [2, 3], 'l': [1, 2], 't': [1, 3]},
         currentNumberOfPlaying: 1,
         remainingNumberOfPlaying: 1,
-//    scaleRange: Array(1, 9), // Value should later be created automatically;
-        scaleRange: scaleRange, // Value should later be created automatically;
+        scaleRange: scaleRange, 
         centralViewScaleForStart: centralViewScaleForStart,
-        //var centralViewScale = centralViewScaleForStart.slice();  // used for staff and solmi view
-//    var centralViewScale = $.extend(true, {}, centralViewScaleForStart);  // used for staff and solmi view
-        centralViewScale: centralViewScale, // used for staff and solmi view
-//    console.log('centralViewScale: ', centralViewScale);
-//    scalesCurrent: new Array(), <- before require.js
+        centralViewScale: centralViewScale,
         scalesCurrent: scalesCurrent,
-//    setScalesCurrent: helpers.setScalesCurrent(),
         scalesLimit: scalesLimit,
-//    console.log('scalesLimit:', scalesLimit);
-//    var positionOfHalvesInScale = new Array(2, 4, 7, 9, 11); // u, i
         positionOfHalvesInScale: positionOfHalvesInScale,
         positionOfFullInScale: positionOfFullInScale,
         positionInSquare: {'n': 'center', 'u': 'center bottom', 'i': 'center top'},
-//    var soundKeys = new Array(soundKeysMajor, soundKeysMinor);
         soundKeys: soundKeys, // //DEPRECIATED
         soundKeys2: soundKeys2,
         startTimeOfPlay: 0, //0 since require.js
@@ -126,28 +109,17 @@ define([
             this.soundKeyCurrent['mm'] = mm;
             this.soundKeyCurrent['key'] = soundKey;
             this.soundKeyCurrent['position_staff'] = helpers.setPositionStaffForSoundKey(this.positionOfHalvesInScale, this.soundKeyCurrent['position'], this.soundKeyCurrent['mm']);
-            //        soundKeyCurrent['position_half_relative'] = setPositionHalfRelative(soundKeyCurrent['position'], soundKeyCurrent['mm'], soundKeyCurrent['position_half_relative']);
             console.log("sb setSoundKeyCurrent this.soundKeyCurrent:", this.soundKeyCurrent);
         },
         currentRandomMode: 'withSoundKeys',
         playData: {'notes': {}},
-//        samples: [],
-//    var notesInStaffStart = {'start-left': 100, 'start-bottom': 107, 'height-diff': 7, 'notes-diff': 4,
-//        'notes-left-current': 0, 'note-width': 30, 'inter-tone-signs-width': 6, 'continue': true};
         notesInStaffStart: notesInStaffStart,
-//    var positonsSharp = new Array(0, -3, 1, -2, -5);
-//    var positonsFlat = new Array(0, 3, -1, 2, -2);
-//    var keySignatures =  {
-//        'C':{'half':'', 'half-count':0},
-//        '':{'half':'', 'half-count':},
-//    };
 
         noteLengths: {
             4: {'imageNamePart': '1-1'}, 2: {'imageNamePart': '1-2'}, 1: {'imageNamePart': '1-4'},
             0.5: {'imageNamePart': '1-8'}, 0.25: {'imageNamePart': '1-16'}, 0.125: {'imageNamePart': '1-32'}
         },
         notesInStaff: $.extend(true, {}, notesInStaffStart),
-//    staffRange: new Array(16, 64),
         staffRange: staffRange,
         notesNrAndName: {
             16: 'C', 17: 'Cis/Des', 18: 'D', 19: 'Dis/Es', 20: 'E', 21: 'F', 22: 'Fis/Ges', 23: 'G', 24: 'Gis/As', 25: 'A', 26: 'Ais/B', 27: 'H',
@@ -158,28 +130,20 @@ define([
             58: 'fis/ges<sup>2</sup>', 59: 'g<sup>2</sup>', 60: 'gis/as<sup>2</sup>', 61: 'a<sup>2</sup>', 62: 'ais/b<sup>2</sup>', 63: 'h<sup>2</sup>',
             64: 'c<sup>3</sup>'
         },
-//        frequencyNrIsHalf: frequencyNrIsHalf, // at the moment only useful for staff
-//    console.log('frequencyNrIsHalf: ', frequencyNrIsHalf);
         randomRange: new Array(28, 52),
         rangeOfNumberOfNotesInStaff: new Array(4, 25),
         numberOfNotesInStaffCurrent: 4,
-        samples_length: 44100, // Compare http://en.wikipedia.org/wiki/44,100_Hz
-//    var samples_length = 22050;
+//        samples_length: 44100, // Compare http://en.wikipedia.org/wiki/44,100_Hz
         instruments: new Array('piano', 'organ', 'acoustic', 'edm'),
-        currentInstrument: 'piano',
+        currentInstrument: 'acoustic',
         toneFrequencies: helpers.createFrequencies(),
         frequencies: createFrequencies.getFrequenciesInfo(soundKeys2, basicTonesMajor2, basicTonesMinorRaw2,
                 positionOfHalvesInScale, positionOfFullInScale, noteNamesEnglish),
-//    console.log('toneFrequencies: ', toneFrequencies);
-//    console.log('toneFrequencies[3]: ', toneFrequencies[3]);
 
         // Messages: later in different place
         messageNotValid: 'Not a valid string in this context: ',
         messageToneOutOfRange: 'This tone can\'t be shown here: ',
         messageToneLengthNotExist: 'This tone length does not exist: ',
         messageMaxToneNotSmallerThanMin: 'max tone can\'t be smaller than min tone!'
-
-//    soundKeySelect: soundKeySelectField(), // now in views/additional.js
-//    var listOfSolmiStrings = getListOfSolmiStrings(); // now in solmiStrings.js
     };
 });

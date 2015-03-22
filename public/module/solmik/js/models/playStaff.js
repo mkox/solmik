@@ -7,30 +7,6 @@ define([
 ], function ($, _, Backbone, sb, helpers) {
 
     return {
-//        calculateFrequencyNrStaff: function (baseFrequency, addedTonesOf7) {
-//            addedTonesOf7--; // later this correction shound not be needed
-//            var frequencyNrStaff = baseFrequency;
-//
-//            if (addedTonesOf7 !== 0) {
-//                var sign = 1;
-//                if (addedTonesOf7 < 0) {
-//                    sign = -1;
-//                }
-//                console.log('cFNS addedTonesOf7: ', addedTonesOf7);
-////            for (var i = 0; i < addedTonesOf7 * sign; i++ * sign) {
-//                for (var i = 0; i < addedTonesOf7 * sign; i++) {
-//                    if (sb.frequencyNrIsHalf[frequencyNrStaff + sign] === 1) {
-//                        frequencyNrStaff += 2 * sign;
-////console.log('frequencyNr cFNS if frequencyNrStaff', frequencyNrStaff);
-//                    } else {
-//                        frequencyNrStaff += 1 * sign;
-////console.log('frequencyNr cFNS else frequencyNrStaff', frequencyNrStaff);
-//                        console.log('cFNS 75');
-//                    }
-//                }
-//            }
-//            return frequencyNrStaff;
-//        },
         createKeySignature: function () {
             if (sb.soundKeyCurrent['half'] !== '') {
 //            var positonsSharp = new Array(0, -3, 1, -2, -5);
@@ -61,13 +37,6 @@ define([
                     }
                     left += sb.notesInStaff['inter-tone-signs-width'];
                 }
-
-//        $('div#staff').append('<img src="images/' + halfFile + '" class="sign half half-' + position + '" alt="' + toneData['half'] + '">');
-//                $('div#staff .half-' + position).css({'position': 'absolute', 'bottom': bottom + 'px', 'left': left + 'px'});
-//                left += notesInStaff['inter-tone-signs-width'];
-
-//            var notesInStaffStart = {'signature-start-left': 40, 'start-left': 100, 'start-bottom': 107, 'height-diff': 7, 'notes-diff': 4,
-//                'notes-left-current': 0, 'note-width': 30, 'inter-tone-signs-width': 6, 'continue': true};
 
             }
         },
@@ -103,7 +72,7 @@ define([
                 }
             }
         },
-//        prepareForPlayStaff: function (solmiArray, position, toneData, toneElements, baseScale, toneFirstDivision) {
+
         prepareForPlayStaff: function (position, solmiArray) {
             console.log('prepareForPlayStaff solmiArray: ', solmiArray);
             console.log('prepareForPlayStaff position: ', position);
@@ -113,7 +82,6 @@ define([
             var imageNamePart = sb.noteLengths[sb.playData['notes'][position]['length']]['imageNamePart'];
 
             if (frequencyNr >= sb.staffRange[0] && frequencyNr <= sb.staffRange[1]) {
-//                var basePositionOf7 = sb.frequencies[40]['positionOf7'] - 1;  // 40 => c1
                 var basePositionOf7 = sb.frequencies[40]['positionOf7'];  // 40 => c1
                 // in require.js: outside of this function
 
@@ -190,7 +158,6 @@ define([
                 sb.notesInStaff['notes-left-current'] = left - sb.notesInStaff['start-left'];
 
             } else {
-//            $('#message-staff').empty().append(messageToneOutOfRange + solmiArray[position] + ' (base scale: ' + baseScale + ')');
                 $('#message-staff').empty().append(sb.messageToneOutOfRange + solmiArray[position]);
                 sb.notesInStaff['continue'] = false;
 //            throw new Error(messageToneOutOfRange + solmiArray[position]);// I don't want to end the program totally

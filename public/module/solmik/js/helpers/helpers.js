@@ -4,10 +4,7 @@ define([
     'backbone'
 ], function ($, _, Backbone) {
 
-//    return function () {
-//        that = this;
     return {
-//    var handler = {
         array_flip: function (trans) { // Not used at the moment             var key, tmp_ar = {};
 
             for (key in trans) {
@@ -53,10 +50,6 @@ define([
             }
             return position;
         },
-//        //DEPRECIATED:
-//        getScaleOfToneNumber: function (toneNumber) {
-//            return Math.ceil((toneNumber - 3) / 12);
-//        },
         scalesLimit: function (scaleRange) {
             var scalesLimit = '';
             for (var i = scaleRange[0]; i <= scaleRange[1]; i++) {
@@ -66,27 +59,11 @@ define([
             scalesLimit = scalesLimit.slice(0, scalesLimit.length - 1);
             return JSON.parse('{' + scalesLimit + '}');
         },
-//        setIfFrequencyNrIsHalf: function (staffRange, positionOfHalvesInScale) { // at the moment only useful for staff
-//            console.log('helpers.js setIfFrequencyNrIsHalf, this', this);
-//            var frequencyNrIsHalf = {};
-//            for (var i = staffRange[0]; i < staffRange[1]; i++) {
-//                var scalePosition = this.getPositionInScaleOfToneNumber(i);
-//                var halfPosition = $.inArray(scalePosition, positionOfHalvesInScale['major']);
-//                if (halfPosition > -1) {
-//                    frequencyNrIsHalf[i] = 1;
-//                } else {
-//                    frequencyNrIsHalf[i] = 0;
-//                }
-//            }
-//            return frequencyNrIsHalf;
-//        },
         setPositionStaffForSoundKey: function (positionOfHalvesInScale, position, mm) {
             console.log('helpers.js setPositionStaffForSoundKey');
-            //    function setPositionStaffForSoundKey(position, mm, positionCorrection) {
             var positionStaff = position;
             for (var i = 0; i < positionOfHalvesInScale[mm].length; i++) {
                 if (positionOfHalvesInScale[mm][i] < position) {
-                    //            if (positionOfHalvesInScale[mm][i] < (position + positionCorrection)) {
                     positionStaff -= 1;
                 }
             }
@@ -111,6 +88,4 @@ define([
             return scalesCurrent;
         }
     };
-//    return {handler: handler };
-//    };
 });
