@@ -9,37 +9,18 @@ define([
 
 // TODO:
 //     
-// - Frontend output of frequences + note-names, especially in connection with random:
-//   - at which stage taken for this output?
-//     - Is importent for testing
-//     
-// - getSolmiToneOfSoundKeyFromFrequency(...)
-//    Maybe other solution for the following code:
-//            } else if (half === '') { // for soundKey C, a
-//                solmiToneNr--;
-//                half = 'i';
-//            }
-//    => maybe adapt it better in var soundKeys2
-// 
+// - Categories with solmistrings: browse while still seeing the upper part of the page
 // - $('#base-tone-length').change(function() {
 //   - add handling of wrong input (not int, not within a limit)
-// 
 // - "DEPRECIATED": rewrite code so that code marked with "DEPRECIATED" needs not be used any more
-// 
 // - maybe still problem with minor
-// - frequencies:
-//   - ...
-// - staff:
-//   - a bit smaller?
-// - input through microphone, output
-// - include soundkey in solmi-string
-// - all Dur / all Moll one after the other for one string
-//   - 2014-11-09: ?
-// - sound off/on
-// 
+// - make additional test output for getFrequenciesInfo()
+// - random
+//   - make repeat button beside the go button
 //     
 // later:
 // - use of backbone.js?
+// - choose between English and German
 // - when a new solmiString is played before an other has ended:
 //   - Interrupt the old one before the new one is played
 // - throw new Error:
@@ -49,12 +30,27 @@ define([
 // - test for whitespace in solmi string
 //   - string = string.trim()
 // - (better picture(s) for u/i in solmi view?)
-// - in chromium (not chrome) a solmiString does not lead to the correct position
 // - 
 // - special code to make pixels less visible?
 // - createFrequencies(): Calculate 111
-// - var basicToneNr
-//   - put it earlier, it does not need to be in every loop?
-//     - but later it might be needed there, when the keys also can change within a solmi string
 // - limit Length of solmiString?
 //   - might only be relevant, if somebody gets into the access restricted backend.
+// - sound off/on
+// - better implementation of input through microphone, output
+//   - ...
+//   - don't show further small frequencies
+// - include soundkey in solmi-string
+// - solmistring-form-for-list: class instead of id
+// - Login
+//   - better page for wrong login, maybe backbutton
+// - /** -> more comments
+// - after click on "add string"
+//   - show pre-selected category
+// - message "Value is required and can't be empty": more precisely
+// - getSolmiToneOfSoundKeyFromFrequency(...)
+//    Maybe other solution for the following code:
+//            } else if (half === '') { // for soundKey C, a
+//                solmiToneNr--;
+//                half = 'i';
+//            }
+//    => maybe adapt it better in var soundKeys2

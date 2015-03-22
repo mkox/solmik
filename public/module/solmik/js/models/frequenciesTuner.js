@@ -1,4 +1,4 @@
-// ADEPTED FROM EXTERNAL SOURCE: https://github.com/FerCa/tuner/
+// ADAPTED VERSION OF EXTERNAL SOURCE: https://github.com/FerCa/tuner/
 define([
     'jquery',
     'underscore',
@@ -38,7 +38,7 @@ define([
     }
 
     function startTuner() {
-        
+        that = this;
         window.AudioContext = window.AudioContext ||
                 window.webkitAudioContext;
 
@@ -57,8 +57,7 @@ define([
             tuner.start(function (note) {
                 
 //            $('#frequencies-string2').text(note);
-
-                if (tunerShowData === true
+                if (that.tunerShowData === true
                         && note !== 0 && note !== 64 && note !== 75
                         && note !== frequencyBefore) {
                     

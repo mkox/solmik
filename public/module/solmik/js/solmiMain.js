@@ -19,6 +19,10 @@ define([
     for (var i = 1; i <= 2; i++) {
         $('.squares-3x3 .row:nth-child(' + i + ') div:first-child').css({'visibility': 'hidden'});
     }
+    
+    $('#solmi-strings form input').keypress(function (event) {
+         event.preventDefault();
+    });
 
     $('#solmi-strings form .go').click(function () {
         console.log('scalesCurrent after click go: ', sb.scalesCurrent);
