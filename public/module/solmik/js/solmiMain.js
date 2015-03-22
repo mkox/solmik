@@ -9,7 +9,7 @@ define([
     'views/forms',
     'views/additional'
 ], function ($, _, Backbone, sb, helpers, playCommon, frequenciesTuner, forms, viewsAdd) {
-    
+
     $('#div1').after(forms.randomForm());
     $('#div1').after(viewsAdd.inputBaseToneLength());
     $('#div1').after(forms.selectFieldForRepetition());
@@ -19,15 +19,17 @@ define([
     for (var i = 1; i <= 2; i++) {
         $('.squares-3x3 .row:nth-child(' + i + ') div:first-child').css({'visibility': 'hidden'});
     }
-    
+
     $('#solmi-strings form input').keypress(function (event) {
-         event.preventDefault();
+        if (event.which === 13) {
+            event.preventDefault();
+        }
     });
 
     $('#solmi-strings form .go').click(function () {
         console.log('scalesCurrent after click go: ', sb.scalesCurrent);
 //        try {
-            playCommon.prepareForPlay(this);
+        playCommon.prepareForPlay(this);
 //        } catch (e) {
 //            console.error(e.message);
 //            return false;
@@ -38,7 +40,7 @@ define([
     $('form#random .go').click(function () {
         console.log('scalesCurrent after click form#random: ', sb.scalesCurrent);
 //        try {
-            playCommon.prepareForPlay(this, 'random');
+        playCommon.prepareForPlay(this, 'random');
 //        } catch (e) {
 //            console.error(e.message);
 //            return false;
@@ -88,7 +90,7 @@ define([
     $('form.frequencies .stop').click(function () {
         try {
             frequenciesTuner.tunerShowData = false;
-console.log('solmiMain .stop frequenciesTuner', frequenciesTuner);
+            console.log('solmiMain .stop frequenciesTuner', frequenciesTuner);
         } catch (e) {
             console.error(e.message);
             return false;
