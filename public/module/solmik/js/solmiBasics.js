@@ -135,7 +135,7 @@ define([
         numberOfNotesInStaffCurrent: 4,
 //        samples_length: 44100, // Compare http://en.wikipedia.org/wiki/44,100_Hz
         instruments: new Array('piano', 'organ', 'acoustic', 'edm'),
-        currentInstrument: 'piano',
+        currentInstrument: 'acoustic',
         toneFrequencies: helpers.createFrequencies(),
         frequencies: createFrequencies.getFrequenciesInfo(soundKeys2, basicTonesMajor2, basicTonesMinorRaw2,
                 positionOfHalvesInScale, positionOfFullInScale, noteNamesEnglish),
