@@ -1,9 +1,35 @@
+body {
+    padding-top: 0;
+}
+.navbar {
+    display: none;
+}
+
+#head h1 {
+    float: left;
+    font-size: 150%;
+    margin: 0;
+}
+#head #login {
+    float: right;
+}
+#login-form fieldset, #login #logged-in-message {
+    float: left;
+}
+#login-form input {
+    float: right;
+}
+#logout-form {
+    float: right;
+    margin-left: 10px;
+}
+
 #div1
 {
     position: relative;
     height: 150px;
     width: 150px;
-    margin: 50px;
+    margin: 10px 50px 10px 50px;
     padding:10px;
     border: 1px solid black;
     -webkit-perspective:150px; /* Chrome, Safari, Opera  */
@@ -75,12 +101,14 @@
 }
 #upper2 {
     float:right;
+    margin-left: 10px;
+    
 }
-h2 {/*BETTER SOLUTION NEEDED*/
+h2 {/*better solutin needed*/
     clear: both;
 }
 div#staff {
-    margin-top: 50px;
+    margin-top: 10px;
     position: relative;
 }
 div#staff .note {
