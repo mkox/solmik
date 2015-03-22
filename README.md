@@ -19,7 +19,7 @@ My own code you find mainly in the following folders:
 Installation
 ------------
 
-Insert in the linux shell:
+Insert in a linux shell:
 
     git clone https://github.com/mkox/solmik.git
     cd solmik
@@ -83,7 +83,7 @@ A success message should look like the following:
 Now you can insert data into the database tables from the file solmik_insert_data.sql.
 In addition in the table User you should insert a name and a password.
 
-Maybe you also have to adept the file `public/.htaccess`, especially on a provider for shared content:
+Maybe you also have to adapt the file `public/.htaccess`, especially on a provider for shared content:
 If you have an error 500 (Internal Server Error), it might help, if you uncomment the last three lines and add
 a new one:
 
