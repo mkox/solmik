@@ -1,4 +1,4 @@
-// ADEPTED FROM EXTERNAL SOURCE: https://github.com/FerCa/tuner/
+// ADAPTED VERSION OF EXTERNAL SOURCE: https://github.com/FerCa/tuner/
 define([
     'jquery',
     'underscore',
