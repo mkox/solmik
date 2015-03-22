@@ -29,7 +29,7 @@ body {
     position: relative;
     height: 150px;
     width: 150px;
-    margin: 10px 50px 10px 50px;
+    margin: 10px 50px 20px 50px;
     padding:10px;
     border: 1px solid black;
     -webkit-perspective:150px; /* Chrome, Safari, Opera  */
@@ -48,8 +48,8 @@ body {
     display: table-row;
 }
 #all-squares .squares-3x3 .row div {
-    width: 2em;
-    height: 1em;
+    width: 2.4em;
+    height: 1.2em;
     /*    background-color: yellow; */
     display: table-cell;
     border: 1px solid black;
