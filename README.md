@@ -4,7 +4,7 @@ Solmik - solmization tool
 Introduction
 ------------
 A test presentation of this you find in **http://solmiktest1.michaelkox.de**.
-It is best tested with Firefox, it does not work with Internet Explorer.
+It is best tested with Firefox. It does not work with Internet Explorer, because the wav audio format is used.
 It is not ready to use for a general public, but already has a lot of functionality. 
 
 Some of the tools used for it:
@@ -111,3 +111,5 @@ There is a login area where you can insert new solmization strings and new categ
 
 The buttons "start", "stop" and "reset" belong to an experimental feature for using sound that is sent 
 through a microphone.
+
+It is best tested with major sound keys, minor sound keys do not work correctly.
