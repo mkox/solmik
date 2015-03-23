@@ -10,6 +10,9 @@ define([
 // TODO:
 //     
 // - Categories with solmistrings: browse while still seeing the upper part of the page
+// - Find sounds with more correct frequencies
+// - minor sound keys: random min/max values are not correct
+//   - correction is nessessary in createSolmiArrayFromToneNumbers.js -> create
 // - $('#base-tone-length').change(function() {
 //   - add handling of wrong input (not int, not within a limit)
 // - "DEPRECIATED": rewrite code so that code marked with "DEPRECIATED" needs not be used any more
