@@ -135,3 +135,7 @@ form#random {
 .categories-top {
     clear: both;
 }
+
+.used-string .repeat {
+    margin-right: 5px;
+}

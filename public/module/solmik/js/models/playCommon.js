@@ -173,16 +173,15 @@ define([
         prepareForPlay: function (currentField, mode) {
             console.log('playCommon.js prepareForPlay currentField', currentField);
             sb.samples = [];
-            $('#message-staff, .used-string, .notes-string, .frequencies-string').empty();
+            $('#message-staff, .notes-string, .frequencies-string').empty();
             var baseScale = false;
-            if (mode !== 'random') {
+            if (mode === 'standard') {
 console.log('playCommon.js $(currentField)', $(currentField));
 console.log('playCommon.js $(currentField).parents(form)', $(currentField).parents('form'));
 //                var soundKey = $(currentField).parent('form').find('.sound-keys').val();
                 var soundKey = $(currentField).parents('form').find('.sound-keys').val();
 console.log('playCommon.js soundKey', soundKey);
 console.log('playCommon.js x200');
-                sb.setSoundKeyCurrent(soundKey);
 console.log('playCommon.js x210');
                 console.log('prepareForPlay, scalesCurrent : ' + sb.scalesCurrent);
 //                var solmiString = $(currentField).parent('form').find('input[type="text"]').val();
@@ -190,7 +189,13 @@ console.log('playCommon.js x210');
 //                baseScale = parseInt($(currentField).parent('form').find('.scales').val());
                 baseScale = parseInt($(currentField).parents('form').find('.scales').val());
                 console.log('solmiString: ' + solmiString);
-//        var solmiFirstDivision = solmiString.split('|');
+            } else if (mode === 'repeat') {
+                var soundKey = $(currentField).parents('.used-string').find('.sound-key').text();
+                var solmiString = $(currentField).parents('.used-string').find('.solmistring').text();
+                baseScale = parseInt($(currentField).parents('.used-string').find('.scale').text());
+            }
+            if(mode === 'standard' || mode === 'repeat'){
+                sb.setSoundKeyCurrent(soundKey);
                 var solmiArray = solmiString.split('-');
             }
 //        var solmiArray = solmiFirstDivision[0].split('-');
@@ -208,9 +213,12 @@ console.log('playCommon.js x210');
 //                    throw new Error(e.message);
 //                }
             }
-//        var outputString = 'Used string: ';
-            var outputString = solmiArray.join('-');
-            outputString += ' (used string), ' + sb.soundKeyCurrent['key'] + ' ' + sb.soundKeyCurrent['mm'];
+
+            $('.used-string').empty();
+            var outputString = '<input class="repeat" type="button" value="Repeat" name="repeat">';
+            outputString += '<span class="solmistring">' + solmiArray.join('-') + '</span>';
+            outputString += ' (used string), <span class="sound-key">' + sb.soundKeyCurrent['key'] + '</span> ' + sb.soundKeyCurrent['mm']
+            + ', scale <span class="scale">' + baseScale + '</span>';
             $('.used-string').append(outputString);
 
             playStaff.createKeySignature();

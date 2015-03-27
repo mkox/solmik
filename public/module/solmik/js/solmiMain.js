@@ -29,7 +29,19 @@ define([
     $('#solmi-strings form .go').click(function () {
         console.log('scalesCurrent after click go: ', sb.scalesCurrent);
 //        try {
-        playCommon.prepareForPlay(this);
+        playCommon.prepareForPlay(this, 'standard');
+//        } catch (e) {
+//            console.error(e.message);
+//            return false;
+//        }
+//        return false;
+    });
+    
+//    $('.used-string .repeat').click(function () {
+    $('body').on('click', '.used-string .repeat', function () {
+        console.log('scalesCurrent after click repeat: ', sb.scalesCurrent);
+//        try {
+        playCommon.prepareForPlay(this, 'repeat');
 //        } catch (e) {
 //            console.error(e.message);
 //            return false;
