@@ -56,6 +56,7 @@ function frequenciesForm() {
             form += this.selectFieldForNumberOfNotesInStaff() + '<br>';
 //            form += '<input type="submit" class="go" value="Go">';
             form += '<input class="go" type="button" value="Go" name="go">';
+            form += '<input class="repeat" type="button" value="Repeat" name="repeat">';
             form += '</form>';
             return form;
         },

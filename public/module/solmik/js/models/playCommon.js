@@ -190,9 +190,9 @@ console.log('playCommon.js x210');
                 baseScale = parseInt($(currentField).parents('form').find('.scales').val());
                 console.log('solmiString: ' + solmiString);
             } else if (mode === 'repeat') {
-                var soundKey = $(currentField).parents('.used-string').find('.sound-key').text();
-                var solmiString = $(currentField).parents('.used-string').find('.solmistring').text();
-                baseScale = parseInt($(currentField).parents('.used-string').find('.scale').text());
+                var soundKey = $('.used-string .sound-key').text();
+                var solmiString = $('.used-string .solmistring').text();
+                baseScale = parseInt($('.used-string .scale').text());
             }
             if(mode === 'standard' || mode === 'repeat'){
                 sb.setSoundKeyCurrent(soundKey);

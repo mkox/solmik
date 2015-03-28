@@ -37,11 +37,13 @@ define([
 //        return false;
     });
     
-//    $('.used-string .repeat').click(function () {
-    $('body').on('click', '.used-string .repeat', function () {
+    $('body').on('click', '.repeat', function () {
         console.log('scalesCurrent after click repeat: ', sb.scalesCurrent);
 //        try {
-        playCommon.prepareForPlay(this, 'repeat');
+        var usedStringText = $('.used-string').text();
+        if(usedStringText){
+            playCommon.prepareForPlay(this, 'repeat');
+        }
 //        } catch (e) {
 //            console.error(e.message);
 //            return false;
