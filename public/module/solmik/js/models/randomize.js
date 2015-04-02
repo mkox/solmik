@@ -34,7 +34,17 @@ define([
             var toneSequence = new Array();
             var numberOfValidTones = sb.randomRange[1] - sb.randomRange[0] + 1;
             for (var i = 0; i < sb.numberOfNotesInStaffCurrent; i++) {
-                var randomToneNumber = Math.floor((Math.random() * numberOfValidTones) + sb.randomRange[0]);
+                var randomToneNumber = 0;
+                while (randomToneNumber === 0) {
+                    var randomToneNumberTemp = Math.floor((Math.random() * numberOfValidTones) + sb.randomRange[0]);
+                    if(sb.noIU === false){
+                        randomToneNumber = randomToneNumberTemp;
+                    } else {
+                        if(sb.frequencies[randomToneNumberTemp]['soundKey'][sb.soundKeyCurrent['mm']][sb.soundKeyCurrent['position']]['activeHalf'] === ''){
+                            randomToneNumber = randomToneNumberTemp;
+                        }
+                    }
+                }
                 toneSequence.push(randomToneNumber);
             }
             return toneSequence;

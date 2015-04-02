@@ -11,6 +11,7 @@ define([
 ], function ($, _, Backbone, sb, helpers, playCommon, frequenciesTuner, forms, viewsAdd) {
 
     $('#div1').after(forms.randomForm());
+    $('#div1').after(viewsAdd.noIU());
     $('#div1').after(viewsAdd.inputBaseToneLength());
     $('#div1').after(forms.selectFieldForRepetition());
     $('#div1').after(forms.selectFieldForInstruments());
@@ -23,6 +24,14 @@ define([
     $('#solmi-strings form input').keypress(function (event) {
         if (event.which === 13) {
             event.preventDefault();
+        }
+    });
+    
+    $('.noIU').click(function () {
+        if(sb.noIU === false){
+            sb.noIU = true;
+        } else {
+            sb.noIU = false;
         }
     });
 

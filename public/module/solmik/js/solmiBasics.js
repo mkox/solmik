@@ -20,6 +20,8 @@ define([
     var scaleRange = [1, 9];
     var centralViewScaleForStart = 4;
     var centralViewScale = 0 + centralViewScaleForStart;
+    
+    var noIU = false;
 
     var scalesCurrent = [];
     scalesCurrent = helpers.setScalesCurrent(scaleRange, centralViewScale, scalesCurrent);
@@ -84,6 +86,7 @@ define([
 //    var basicTonesMinorStaff = {'l': 1, 't': 2, 'd': 3, 'r': 4, 'm': 5, 'f': 6, 's': 7};
         basicTonesMinorStaff: {'l': 1 + 7, 't': 2 + 7, 'd': 3, 'r': 4, 'm': 5, 'f': 6, 's': 7},
         tonePositions: {'d': [3, 1], 'r': [3, 2], 'm': [3, 3], 'f': [2, 2], 's': [2, 3], 'l': [1, 2], 't': [1, 3]},
+        noIU: noIU,
         currentNumberOfPlaying: 1,
         remainingNumberOfPlaying: 1,
         scaleRange: scaleRange, 
