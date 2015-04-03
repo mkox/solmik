@@ -114,7 +114,7 @@ define([
             this.soundKeyCurrent['position_staff'] = helpers.setPositionStaffForSoundKey(this.positionOfHalvesInScale, this.soundKeyCurrent['position'], this.soundKeyCurrent['mm']);
             console.log("sb setSoundKeyCurrent this.soundKeyCurrent:", this.soundKeyCurrent);
         },
-        currentRandomMode: 'withSoundKeys',
+        currentRandomMode: 'withSoundKeysMajor',
         playData: {'notes': {}},
         notesInStaffStart: notesInStaffStart,
 
