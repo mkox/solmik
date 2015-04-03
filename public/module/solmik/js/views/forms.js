@@ -54,6 +54,7 @@ function frequenciesForm() {
             form += this.selectFormWithToneNames('max', 1);
             form += '<br>sound key:' + this.soundKeySelect + "\n";
             form += this.selectFieldForNumberOfNotesInStaff() + '<br>';
+            form += this.selectFieldForFirstStringItem() + '<br>';
 //            form += '<input type="submit" class="go" value="Go">';
             form += '<input class="go" type="button" value="Go" name="go">';
             form += '<input class="repeat" type="button" value="Repeat" name="repeat">';
@@ -68,6 +69,15 @@ function frequenciesForm() {
                     selected = ' selected';
                 }
                 select += '<option value="' + i + '"' + selected + '>' + i + '</option>';
+            }
+            select += '</select>';
+            return select;
+        },
+        selectFieldForFirstStringItem: function () {
+            var select = 'Syllable of first tone: <select name="syllableOfFirstTone" id="syllableOfFirstTone">' + "/n";
+            select += '<option value="-" selected>-</option>';
+            for (var i = 0; i < sb.basicTones.length; i++) {
+                select += '<option value="' + sb.basicTones[i] + '">' + sb.basicTones[i] + '</option>';
             }
             select += '</select>';
             return select;

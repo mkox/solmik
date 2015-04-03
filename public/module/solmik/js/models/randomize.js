@@ -6,6 +6,25 @@ define([
     'helpers/createSolmiArrayFromToneNumbers'
 ], function ($, _, Backbone, sb, createSolmiArrayFromToneNumbers) {
 
+    function createToneNumberForSelectedSyllable(syllable) {
+
+        var toneNumbers = [];
+        for(var i = sb.randomRange[0]; i <= sb.randomRange[1]; i++){
+            if(syllable === sb.frequencies[i]['soundKey'][sb.soundKeyCurrent['mm']][sb.soundKeyCurrent['position']]['basicTone']
+                && sb.frequencies[i]['soundKey'][sb.soundKeyCurrent['mm']][sb.soundKeyCurrent['position']]['activeHalf'] === ''){
+                toneNumbers.push(i);
+            }
+        }
+
+        if(toneNumbers.length > 0){
+            var arrayPosition = Math.floor((Math.random() * toneNumbers.length));
+            
+            return toneNumbers[arrayPosition];
+        } else {
+            return 0;
+        }
+    }
+
     return {
         randomize: function (currentField) {
             var that = this;
@@ -33,8 +52,12 @@ define([
         randomizeToneNumbers: function () {
             var toneSequence = new Array();
             var numberOfValidTones = sb.randomRange[1] - sb.randomRange[0] + 1;
+            var syllableOfFirstTone = $('#random #syllableOfFirstTone').val();
             for (var i = 0; i < sb.numberOfNotesInStaffCurrent; i++) {
                 var randomToneNumber = 0;
+                if(i === 0 && syllableOfFirstTone !== '-'){
+                    randomToneNumber = createToneNumberForSelectedSyllable(syllableOfFirstTone);
+                }
                 while (randomToneNumber === 0) {
                     var randomToneNumberTemp = Math.floor((Math.random() * numberOfValidTones) + sb.randomRange[0]);
                     if(sb.noIU === false){
