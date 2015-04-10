@@ -132,31 +132,24 @@ define([
             sb.currentTimeOfPlay += tonelength;
             var dateNow = Date.now();
             var waitTime = sb.startTimeOfPlay + sb.currentTimeOfPlay - dateNow;
-//            if(waitTime < (sb.startTimeOfPlay + position * tonelength)){
-//            if((dateNow - sb.startTimeOfPlay) < (sb.startTimeOfPlay + position * tonelength)){
-//                alert('waitTime problem!');
-//            }
             if(waitTime < 0){
-//                alert('waitTime problem! (2)');
                 console.log('playSolmiString, !: waitTime < 0');
             }
             that.waitTimeDiffSum += tonelength - waitTime;
             var timePassed = dateNow - sb.startTimeOfPlay;
             var waitTime2 =  sb.currentTimeOfPlay - timePassed;
-            var timePassedDiff = timePassed - that.timePassedBefore;
+//            var timePassedDiff = timePassed - that.timePassedBefore;
             that.timePassedBefore = timePassed;
-//            if(){
-            console.log('playSolmiString dateNow: ', dateNow);
-            console.log('playSolmiString sb.currentTimeOfPlay: ', sb.currentTimeOfPlay);
-            console.log('playSolmiString timePassed: ', timePassed);
-            console.log('playSolmiString timePassedDiff: ', timePassedDiff);
-            console.log('playSolmiString waitTime: ', waitTime);
-            console.log('playSolmiString waitTime2: ', waitTime2);
-            console.log('playSolmiString that.waitTimeDiffSum: ', that.waitTimeDiffSum);
+//            console.log('playSolmiString dateNow: ', dateNow);
+//            console.log('playSolmiString sb.currentTimeOfPlay: ', sb.currentTimeOfPlay);
+//            console.log('playSolmiString timePassed: ', timePassed);
+//            console.log('playSolmiString timePassedDiff: ', timePassedDiff);
+//            console.log('playSolmiString waitTime: ', waitTime);
+//            console.log('playSolmiString waitTime2: ', waitTime2);
+//            console.log('playSolmiString that.waitTimeDiffSum: ', that.waitTimeDiffSum);
             if (position < sb.playData['notes-length'] - 1) {
                 setTimeout(function () {
                     that.playSolmiString(position + 1);
-//            }, baseToneLength * tone['period']);
                 }, waitTime2);
             } else {
                 sb.currentTimeOfPlay = 0;
