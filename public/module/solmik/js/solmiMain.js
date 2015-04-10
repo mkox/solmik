@@ -11,7 +11,6 @@ define([
 ], function ($, _, Backbone, sb, helpers, playCommon, frequenciesTuner, forms, viewsAdd) {
 
     $('#div1').after(forms.randomForm());
-    $('#div1').after(viewsAdd.noIU());
     $('#div1').after(viewsAdd.inputBaseToneLength());
     $('#div1').after(forms.selectFieldForRepetition());
     $('#div1').after(forms.selectFieldForInstruments());

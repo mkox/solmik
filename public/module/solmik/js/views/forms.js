@@ -54,6 +54,7 @@ function frequenciesForm() {
             form += this.selectFormWithToneNames('max', 1);
             form += '<br>sound key:' + this.soundKeySelect + "\n";
             form += this.selectFieldForNumberOfNotesInStaff() + '<br>';
+            form += '<input class="noIU" type="checkbox"> no i or u in solmization string' + '<br>';
             form += this.selectFieldForFirstStringItem() + '<br>';
 //            form += '<input type="submit" class="go" value="Go">';
             form += '<input class="go" type="button" value="Go" name="go">';
