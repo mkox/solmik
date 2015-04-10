@@ -106,8 +106,8 @@ define([
             return JSON.parse(toneData);
         },
         play: function () {
-//            playSound.playSound();
             sb.startTimeOfPlay = Date.now();
+            playSound.playSound(0); // play first tone a bit earlier
             this.playSolmiString(0);
         },
         playSolmiString: function (position) {
@@ -126,7 +126,9 @@ define([
             var tonelength = sb.playData['notes'][position]['length'] * sb.baseToneLength;
 //        playStaff(position, tone);
             playStaff.playStaff(position);
-            playSound.playSound(position);
+            if(position > 0){
+                playSound.playSound(position);
+            }
             sb.currentTimeOfPlay += tonelength;
             var dateNow = Date.now();
             var waitTime = sb.startTimeOfPlay + sb.currentTimeOfPlay - dateNow;
