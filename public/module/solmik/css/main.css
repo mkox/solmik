@@ -139,3 +139,7 @@ form#random {
 .used-string .repeat {
     margin-right: 5px;
 }
+
+#base-tone-length {
+    width: 4em;
+}
