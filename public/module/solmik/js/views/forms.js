@@ -108,7 +108,7 @@ function frequenciesForm() {
         },
         selectFieldForRandomMode: function () {
             var modes = {
-                'withSoundKeys': 'with random sound keys',
+//                'withSoundKeys': 'with random sound keys',
                 'withSoundKeysMajor': 'with major random sound keys',
                 'withSoundKeysMinor': 'with minor random sound keys',
                 'withoutSoundKeys': 'without random sound keys'

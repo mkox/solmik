@@ -73,14 +73,13 @@ define([
             return toneSequence;
         },
         randomizeSoundKeys: function () {
-//        var numberOfSoundKeys = Object.keys(soundKeys['major']).length + Object.keys(soundKeys['minor']).length;
+
             var soundKeysArray = new Array();
-            if (sb.currentRandomMode === 'withSoundKeys' || sb.currentRandomMode === 'withSoundKeysMajor') {
+            if (sb.currentRandomMode === 'withSoundKeysMajor') {
                 for (var key in sb.soundKeys['major']) {
                     soundKeysArray.push(key);
                 }
-            }
-            if (sb.currentRandomMode === 'withSoundKeys' || sb.currentRandomMode === 'withSoundKeysMinor') {
+            } else if (sb.currentRandomMode === 'withSoundKeysMinor') {
                 for (var key in sb.soundKeys['minor']) {
                     soundKeysArray.push(key);
                 }
