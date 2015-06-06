@@ -56,6 +56,7 @@ function frequenciesForm() {
             form += this.selectFieldForNumberOfNotesInStaff() + '<br>';
             form += '<input class="noIU" type="checkbox"> no i or u in solmization string' + '<br>';
             form += this.selectFieldForFirstStringItem() + '<br>';
+            form += this.selectFieldForMaxDeviationFromFirstSound() + '<br>';
 //            form += '<input type="submit" class="go" value="Go">';
             form += '<input class="go" type="button" value="Go" name="go">';
             form += '<input class="repeat" type="button" value="Repeat" name="repeat">';
@@ -100,6 +101,23 @@ function frequenciesForm() {
             for (var i = sb.rangeOfNumberOfNotesInStaff[0]; i <= sb.rangeOfNumberOfNotesInStaff[1]; i++) {
                 var selected = '';
                 if (i === sb.numberOfNotesInStaffCurrent) {
+                    selected = ' selected';
+                }
+                select += '<option value="' + i + '"' + selected + '>' + i + '</option>';
+            }
+            select += '</select>';
+            return select;
+        },
+        selectFieldForMaxDeviationFromFirstSound: function () {
+            var select = 'Max. deviation from 1st sound: <select name="max-deviation-from-first-sound" class="max-deviation-from-first-sound">' + "/n";
+            var selected = '';
+            if (0 === sb.maxDeviationFromFirstSound) {
+                    selected = ' selected';
+                }
+            select += '<option value="0"' + selected + '>-</option>';
+            for (var i = 1; i <= 24; i++) {
+                selected = '';
+                if (i === sb.maxDeviationFromFirstSound) {
                     selected = ' selected';
                 }
                 select += '<option value="' + i + '"' + selected + '>' + i + '</option>';

@@ -136,6 +136,7 @@ define([
         randomRange: new Array(28, 52),
         rangeOfNumberOfNotesInStaff: new Array(4, 25),
         numberOfNotesInStaffCurrent: 4,
+        maxDeviationFromFirstSound: 0,
 //        samples_length: 44100, // Compare http://en.wikipedia.org/wiki/44,100_Hz
         instruments: new Array('piano', 'organ', 'acoustic', 'edm'),
         currentInstrument: 'acoustic',

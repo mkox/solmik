@@ -9,16 +9,16 @@ define([
     function createToneNumberForSelectedSyllable(syllable) {
 
         var toneNumbers = [];
-        for(var i = sb.randomRange[0]; i <= sb.randomRange[1]; i++){
-            if(syllable === sb.frequencies[i]['soundKey'][sb.soundKeyCurrent['mm']][sb.soundKeyCurrent['position']]['basicTone']
-                && sb.frequencies[i]['soundKey'][sb.soundKeyCurrent['mm']][sb.soundKeyCurrent['position']]['activeHalf'] === ''){
+        for (var i = sb.randomRange[0]; i <= sb.randomRange[1]; i++) {
+            if (syllable === sb.frequencies[i]['soundKey'][sb.soundKeyCurrent['mm']][sb.soundKeyCurrent['position']]['basicTone']
+                    && sb.frequencies[i]['soundKey'][sb.soundKeyCurrent['mm']][sb.soundKeyCurrent['position']]['activeHalf'] === '') {
                 toneNumbers.push(i);
             }
         }
 
-        if(toneNumbers.length > 0){
+        if (toneNumbers.length > 0) {
             var arrayPosition = Math.floor((Math.random() * toneNumbers.length));
-            
+
             return toneNumbers[arrayPosition];
         } else {
             return 0;
@@ -44,29 +44,35 @@ define([
                 that.randomizeSoundKeys();
             }
             sb.numberOfNotesInStaffCurrent = parseInt($(currentField).parent('form').find('.number-of-notes-in-staff').val());
-            var randomToneNumbers = that.randomizeToneNumbers();
+            sb.maxDeviationFromFirstSound = parseInt($(currentField).parent('form').find('.max-deviation-from-first-sound').val());
+            var randomToneNumbers = that.randomizeToneNumbers(toneMin, toneMax);
             var solmiArray = createSolmiArrayFromToneNumbers.create(randomToneNumbers);
             return solmiArray;
 
         },
-        randomizeToneNumbers: function () {
+        randomizeToneNumbers: function (toneMin, toneMax) {
             var toneSequence = new Array();
             var numberOfValidTones = sb.randomRange[1] - sb.randomRange[0] + 1;
             var syllableOfFirstTone = $('#random #syllableOfFirstTone').val();
             for (var i = 0; i < sb.numberOfNotesInStaffCurrent; i++) {
                 var randomToneNumber = 0;
-                if(i === 0 && syllableOfFirstTone !== '-'){
+                if (i === 0 && syllableOfFirstTone !== '-') {
                     randomToneNumber = createToneNumberForSelectedSyllable(syllableOfFirstTone);
                 }
                 while (randomToneNumber === 0) {
                     var randomToneNumberTemp = Math.floor((Math.random() * numberOfValidTones) + sb.randomRange[0]);
-                    if(sb.noIU === false){
+                    if (sb.noIU === false) {
                         randomToneNumber = randomToneNumberTemp;
                     } else {
-                        if(sb.frequencies[randomToneNumberTemp]['soundKey'][sb.soundKeyCurrent['mm']][sb.soundKeyCurrent['position']]['activeHalf'] === ''){
+                        if (sb.frequencies[randomToneNumberTemp]['soundKey'][sb.soundKeyCurrent['mm']][sb.soundKeyCurrent['position']]['activeHalf'] === '') {
                             randomToneNumber = randomToneNumberTemp;
                         }
                     }
+                }
+                if (i === 0 && sb.maxDeviationFromFirstSound > 0) {
+                    sb.randomRange = [Math.max(sb.randomRange[0], randomToneNumber - sb.maxDeviationFromFirstSound),
+                        Math.min(sb.randomRange[1], randomToneNumber + sb.maxDeviationFromFirstSound)];
+                    numberOfValidTones = sb.randomRange[1] - sb.randomRange[0] + 1;
                 }
                 toneSequence.push(randomToneNumber);
             }
