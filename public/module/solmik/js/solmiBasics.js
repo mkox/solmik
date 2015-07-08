@@ -134,7 +134,7 @@ define([
             64: 'c<sup>3</sup>'
         },
         randomRange: new Array(28, 52),
-        rangeOfNumberOfNotesInStaff: new Array(4, 25),
+        rangeOfNumberOfNotesInStaff: new Array(1, 25),
         numberOfNotesInStaffCurrent: 4,
         maxDeviationFromFirstSound: 0,
 //        samples_length: 44100, // Compare http://en.wikipedia.org/wiki/44,100_Hz
